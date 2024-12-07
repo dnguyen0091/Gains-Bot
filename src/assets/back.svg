@@ -1,0 +1,33 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 200 400"
+    style="background-color: #2c2c2c"
+    width="200"
+    height="400">
+    <!-- Trapezius (Upper Back) -->
+    <polygon points="90,50 110,50 130,100 70,100" fill="#d4a5a5" id="trapezius"/>
+
+    <!-- Latissimus Dorsi (Mid-Back) -->
+    <rect x="70" y="110" width="60" height="50" fill="#d4a5a5" id="latissimus"/>
+
+    <!-- Left Tricep -->
+    <path d="M60,80 Q50,120 60,160" fill="#d4a5a5" id="left-tricep"/>
+    
+    <!-- Right Tricep -->
+    <path d="M140,80 Q150,120 140,160" fill="#d4a5a5" id="right-tricep"/>
+    
+    <!-- Glutes -->
+    <ellipse cx="100" cy="180" rx="30" ry="20" fill="#d4a5a5" id="glutes"/>
+    
+    <!-- Left Hamstring -->
+    <path d="M80,200 Q70,240 80,280" fill="#d4a5a5" id="left-hamstring"/>
+    
+    <!-- Right Hamstring -->
+    <path d="M120,200 Q130,240 120,280" fill="#d4a5a5" id="right-hamstring"/>
+    
+    <!-- Left Calf -->
+    <path d="M80,290 Q75,330 80,370" fill="#d4a5a5" id="left-calf"/>
+    
+    <!-- Right Calf -->
+    <path d="M120,290 Q125,330 120,370" fill="#d4a5a5" id="right-calf"/>
+</svg>

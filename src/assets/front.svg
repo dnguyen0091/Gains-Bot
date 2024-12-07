@@ -1,0 +1,33 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 200 400"
+    style="background-color: #2c2c2c"
+    width="200"
+    height="400">
+    <!-- Head -->
+    <circle cx="100" cy="40" r="20" fill="#999" id="head"/>
+    
+    <!-- Chest (Pectorals) -->
+    <rect x="70" y="70" width="60" height="40" fill="#d4a5a5" id="chest"/>
+    
+    <!-- Abdominals -->
+    <rect x="85" y="120" width="30" height="60" fill="#d4a5a5" id="abdominals"/>
+    
+    <!-- Left Bicep -->
+    <path d="M60,80 Q50,100 60,120" fill="#d4a5a5" id="left-bicep"/>
+    
+    <!-- Right Bicep -->
+    <path d="M140,80 Q150,100 140,120" fill="#d4a5a5" id="right-bicep"/>
+    
+    <!-- Left Quadricep -->
+    <path d="M80,180 Q70,220 80,260" fill="#d4a5a5" id="left-quadricep"/>
+    
+    <!-- Right Quadricep -->
+    <path d="M120,180 Q130,220 120,260" fill="#d4a5a5" id="right-quadricep"/>
+    
+    <!-- Left Calf -->
+    <path d="M80,270 Q75,310 80,350" fill="#d4a5a5" id="left-calf"/>
+    
+    <!-- Right Calf -->
+    <path d="M120,270 Q125,310 120,350" fill="#d4a5a5" id="right-calf"/>
+</svg>
