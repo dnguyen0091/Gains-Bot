@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './App.css';
-
+import { API } from './API.jsx';
+import './App.css'; // Ensure this file is correctly imported
 function App() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -21,13 +21,35 @@ function Header() {
 
 function Body() {
   const [message, setMessage] = useState('');
+  const [messages, setMessages] = useState([]);
 
   const handleInputChange = (event) => {
     setMessage(event.target.value);
   };
 
   const handleSendClick = () => {
-    console.log('Message sent:', message);
+    if (message.trim()) {
+      const newestMessage = { text: message, sender: 'user' };
+
+      // Update the state with the user's message
+      setMessages(prevMessages => [...prevMessages, newestMessage]);
+
+      // Clear the input field
+      setMessage('');
+
+      // Call the API with the user's message
+      API(newestMessage.text).then((response) => {
+        // Update the state with the API's response
+        setMessages(prevMessages => [...prevMessages, { text: response, sender: 'api' }]);
+      }).catch((error) => {
+        console.error('API Error:', error);
+      });
+
+      // Simulate API response (if needed)
+      setTimeout(() => {
+        setMessages(prevMessages => [...prevMessages, { text: 'This is a response from the API', sender: 'api' }]);
+      }, 1000);
+    }
   };
 
   const handleKeyPress = (event) => {
@@ -47,6 +69,13 @@ function Body() {
       <div className="flex flex-col items-center h-full p-4 w-full">
         <div className="displayChat border-2 border-solid border-gray-700 p-4 w-customBox h-customBox mb-0">
           <h1 className="text-xl text-center">Body</h1>
+          <div className="messages items-end">
+            {messages.map((msg, index) => (
+              <div key={index} className={`message ${msg.sender === 'user' ? 'text-right' : 'text-left'}`}>
+                {msg.text}
+              </div>
+            ))}
+          </div>
         </div>
         <div className="w-customBox max-w-2xl flex items-center border-2 border-solid border-gray-800 rounded-md p-0">
           <input
