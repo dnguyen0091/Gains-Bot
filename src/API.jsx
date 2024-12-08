@@ -1,18 +1,16 @@
-// Import necessary libraries
+// API.jsx
 import OpenAI from 'openai';
-import Key from './APIKey';
-// Store the API key securely (Note: It's better to use environment variables for security)
-const apiKey = Key();
+import { Key } from './APIKey'; // Ensure correct import
 
 // Initialize OpenAI with the API key
-const openai = new OpenAI(apiKey);
+const openai = new OpenAI({ apiKey: Key() , dangerouslyAllowBrowser: true});
 
 // Function to call the OpenAI API
 export async function API(prompt) {
     try {
         // Make a request to the OpenAI API
-        const response = await openai.completions.create({
-            model: "gpt-4o-mini", // Specify the model to use
+        const response = await openai.chat.completions.create({
+            model: "gpt-3.5-turbo", // Specify the model to use
             messages: [
                 {
                     role: "system",
@@ -27,7 +25,7 @@ export async function API(prompt) {
         });
 
         // Return the response content
-        return response.data.choices[0].message.content;
+        return response.choices[0].message.content;
     } catch (error) {
         // Handle any errors that occur during the API call
         console.error('OpenAI API Error:', error);
@@ -38,14 +36,40 @@ export async function API(prompt) {
 
 
 
-function input(string)
-{
 
-}
+// function recolor(svg, muscleGroups) {
+//     // Assuming muscleGroups is an array of muscle names to highlight
+//     const muscleColors = {
+//         primary: "#ff0000",    // Red for primary muscles
+//         secondary: "#ff9999"   // Light red for secondary muscles
+//     };
+
+//     try {
+//         // Get all muscle group paths within the SVG
+//         const musclePaths = svg.querySelectorAll('path[data-muscle]');
+        
+//         // Reset all muscles to default color
+//         musclePaths.forEach(path => {
+//             path.style.fill = "#cccccc"; // Default gray
+//         });
+
+//         // Highlight specified muscle groups
+//         muscleGroups.forEach(muscle => {
+//             const musclePath = svg.querySelector(`path[data-muscle="${muscle.name}"]`);
+//             if (musclePath) {
+//                 musclePath.style.fill = muscle.isPrimary ? muscleColors.primary : muscleColors.secondary;
+//             }
+//         });
+//     } catch (error) {
+//         console.error('Error recoloring SVG:', error);
+//     }
+// }
+
+// // Usage example:
+// const muscleGroups = [
+//     { name: "biceps", isPrimary: true },
+//     { name: "forearms", isPrimary: false }
+// ];
 
 
-function recolor(svg,svg2)
-{
-
-}
 
