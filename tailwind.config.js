@@ -15,7 +15,17 @@ export default {
       {
           'customBox': '60rem',
       },
+      colors:
+      {
+        'darkerGrey': '#333333',
+        'darkGrey': '#3C4043',
+        'blue': '1A73E8',
+        'lightGrey': '#AAAAAA',
+        'white': '#FFFFFF',
+        'darkGrey2':'#1E1E1E',
+      }
     },
   },
   plugins: [],
 }
+
