@@ -114,18 +114,18 @@ function Body()
         </div>
         
         {/* Chat Input */}
-        <div className="w-customBox max-w-2xl flex items-center border-2 border-solid border-gray-800 rounded-md p-0">
+        <div className="bg-darkGrey w-customBox max-w-2xl flex items-center border-2 border-solid border-gray-800 rounded-md p-0" >
           <input
             type="text"
             placeholder="Type a message"
-            className="border-none p-2 w-full rounded-l-md focus:outline-none"
+            className="bg-lightGrey border-none p-2 w-full rounded-l-md focus:outline-none rounded-md text-white"
             value={message}
             onChange={handleInputChange}
             onKeyPress={handleKeyPress}
           />
           {/* Send Button */}
-          <button className="bg-blue-500 text-white p-2 rounded-r-md flex items-center" onClick={handleSendClick}>
-            <img src="src/assets/send.svg" alt="send" className="w-10" />
+          <button className="bg-blue-500 p-2 rounded-r-md flex items-center" onClick={handleSendClick}>
+            <img src="src/assets/send.png" alt="send" className="w-10" />
           </button>
         </div>
       </div>
