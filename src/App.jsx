@@ -16,8 +16,9 @@ function App() {
 function Header()
 {
   return(
-    <div className="bg-gray-500 flex justify-center items-center h-16 w-full fixed top-0 left-0 right-0">
-      <h1 className="text-center text-white">GainsBot</h1>
+    <div className="bg-darkGrey2 flex justify-center items-center h-auto w-full fixed top-0 left-0 right-0">
+      <img src="src/assets/Logo.webp" alt="Logo" id="logo" />
+      {/* <h1 className="text-center text-white">GainsBot</h1> */}
     </div>
   );
 }
@@ -136,8 +137,12 @@ function Body()
 // Footer component
 function Footer() {
   return (
-    <div className="bg-gray-500 flex justify-center items-center h-16 w-full fixed bottom-0 left-0 right-0">
-      <p className="text-center text-white">Footer</p>
+    <div className="bg-darkGrey2 flex justify-center items-center h-16 w-full fixed bottom-0 left-0 right-0">
+      {/* container for the credits perhaps change it to a link to GitHub profile */}
+      <div className="flex items-center gap-4">
+        <img src="src/assets/github.png" alt="github" id="githubLogo" />
+        <p className="text-white">Created by dnguyen0091</p>
+      </div>
     </div>
   );
 }
