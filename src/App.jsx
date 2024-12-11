@@ -111,7 +111,7 @@ function Body()
       <div className="flex flex-col items-center h-full p-4 w-full">
 
         {/* Chat Display */}
-        <div ref={chatContainerRef} className="displayChat border-2 border-solid border-gray-700 p-4 w-customBox h-customBox mb-0 overflow-y-scroll">
+        <div ref={chatContainerRef} className="displayChat border-2 border-solid border-gray-700 p-4 w-customBox h-customBox mb-0 overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-transparent hover:scrollbar-thumb-gray-500">
           <h1 className="text-xl text-center">Body</h1>
           {/* helps map inputs users make to chat */}
           <div className="messages items-end">
