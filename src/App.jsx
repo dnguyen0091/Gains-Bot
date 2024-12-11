@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { API } from './API.jsx';
 import './App.css'; // Ensure this file is correctly imported
 function App() {
@@ -85,6 +85,16 @@ function Body()
     }
   };
 
+  const chatContainerRef = useRef(null);
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTo({
+        top: chatContainerRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
+  }, [messages]); 
+
   return (
     //Body component container
     <div className="flex justify-center items-center h-full w-full mt-16 mb-16 p-4">
@@ -101,7 +111,7 @@ function Body()
       <div className="flex flex-col items-center h-full p-4 w-full">
 
         {/* Chat Display */}
-        <div className="displayChat border-2 border-solid border-gray-700 p-4 w-customBox h-customBox mb-0">
+        <div ref={chatContainerRef} className="displayChat border-2 border-solid border-gray-700 p-4 w-customBox h-customBox mb-0 overflow-y-scroll">
           <h1 className="text-xl text-center">Body</h1>
           {/* helps map inputs users make to chat */}
           <div className="messages items-end">
