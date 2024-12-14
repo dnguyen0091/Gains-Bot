@@ -42,7 +42,7 @@ const ChatMessage = ({ message }) => {
     <div className={`flex ${isUser ? 'justify-end' : 'justify-start'} mb-4`}>
       <div className={`max-w-[70%] p-3 text-white ${
         isUser 
-          ? 'bg-gray-700 rounded-tl-2xl rounded-tr-2xl rounded-br-2xl'
+          ? 'bg-gray-700 rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl'
           : 'bg-gray-700 rounded-tl-2xl rounded-tr-2xl rounded-br-2xl'
       }`}>
         {message.text}
@@ -57,6 +57,7 @@ const ChatMessage = ({ message }) => {
 function Body() {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
+  const [loading,setLoading] = useState(false);
   const chatContainerRef = useRef(null);
 
   useEffect(() => {
@@ -73,17 +74,17 @@ function Body() {
   };
 
   const handleKeyPress = (event) => {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' && !loading) {
       handleSendClick();
     }
   };
 
   const handleSendClick = async () => {
-    if (message.trim()) {
+    if (message.trim() && !loading) {
       const userMessage = { text: message, sender: 'user' };
       setMessages(prev => [...prev, userMessage]);
       setMessage('');
-
+      setLoading(true);
       try {
         const response = await API(userMessage.text);
         setMessages(prev => [...prev, { 
@@ -96,6 +97,10 @@ function Body() {
           text: 'Sorry, I encountered an error. Please try again.', 
           sender: 'api' 
         }]);
+      }
+      finally
+      {
+        setLoading(false);
       }
     }
   };
@@ -114,13 +119,13 @@ function Body() {
       </div>
       {/* Add a container for the chat messages */}
       <div className="flex flex-col items-center justify-center flex-grow">
-        <div ref={chatContainerRef} className="displayChat border-2 border-solid border-gray-700 p-4 w-customBox h-customBox mb-0 overflow-y-scroll scrollbar-container">
+        <div ref={chatContainerRef} className="displayChat rounded p-4 w-customBox h-customBox mb-0 overflow-y-scroll scrollbar-container">
           {messages.map((message, index) => (
             <ChatMessage key={index} message={message} />
           ))}
         </div>
         
-        <div className="w-customBox max-w-2xl flex items-center border-2 border-solid border-gray-800 rounded-md p-0 mt-4">
+        <div className="w-customBox max-w-2xl flex items-center rounded-md p-0 mt-4">
           <input
             type="text"
             placeholder="Type a message"
@@ -128,9 +133,11 @@ function Body() {
             value={message}
             onChange={handleInputChange}
             onKeyPress={handleKeyPress}
+            disabled={loading}
           />
           <button className="bg-blue-500 p-2 rounded-r-md flex items-center" onClick={handleSendClick}>
             <img src="src/assets/send.png" alt="send" className="w-10" />
+
           </button>
         </div>
       </div>
