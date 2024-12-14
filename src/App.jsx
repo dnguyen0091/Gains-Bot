@@ -16,7 +16,7 @@ function App() {
 function Header() {
   return (
     <div className="bg-darkGrey2 flex justify-center items-center h-auto w-full fixed top-0 left-0 right-0">
-      <img src="src/assets/Logo.webp" alt="Logo" id="logo" />
+      <img src="src/assets/Logo.png" alt="Logo" id="logo" />
       {/* <h1 className="text-center text-white">GainsBot</h1> */}
     </div>
   );
@@ -101,27 +101,41 @@ function Body() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center flex-grow">
-      <div ref={chatContainerRef} className="displayChat border-2 border-solid border-gray-700 p-4 w-customBox h-customBox mb-0 overflow-y-scroll scrollbar-container">
-        {messages.map((message, index) => (
-          <ChatMessage key={index} message={message} />
-        ))}
+    
+    <div className="flex flex-row">
+
+      <div className="flex justify-center items-center h-full w-full mt-16 mb-16 p-4">
+        {/* Container holding Muscle Anatomy SVGS */}
+        <div className="flex flex-col items-center w-full">
+          <div className="flex w-full">
+            <img src="src/assets/front.svg" alt="frontMuscleGroups" className="border-none" />
+            <img src="src/assets/back.svg" alt="backMuscleGroups" className="border-none" />
+          </div>
       </div>
-      
-      <div className="w-customBox max-w-2xl flex items-center border-2 border-solid border-gray-800 rounded-md p-0 mt-4">
-        <input
-          type="text"
-          placeholder="Type a message"
-          className="bg-lightGrey border-none p-2 w-full rounded-l-md focus:outline-none text-white"
-          value={message}
-          onChange={handleInputChange}
-          onKeyPress={handleKeyPress}
-        />
-        <button className="bg-blue-500 p-2 rounded-r-md flex items-center" onClick={handleSendClick}>
-          <img src="src/assets/send.png" alt="send" className="w-10" />
-        </button>
+      {/* Add a container for the chat messages */}
+      <div className="flex flex-col items-center justify-center flex-grow">
+        <div ref={chatContainerRef} className="displayChat border-2 border-solid border-gray-700 p-4 w-customBox h-customBox mb-0 overflow-y-scroll scrollbar-container">
+          {messages.map((message, index) => (
+            <ChatMessage key={index} message={message} />
+          ))}
+        </div>
+        
+        <div className="w-customBox max-w-2xl flex items-center border-2 border-solid border-gray-800 rounded-md p-0 mt-4">
+          <input
+            type="text"
+            placeholder="Type a message"
+            className="bg-lightGrey border-none p-2 w-full rounded-l-md focus:outline-none text-white"
+            value={message}
+            onChange={handleInputChange}
+            onKeyPress={handleKeyPress}
+          />
+          <button className="bg-blue-500 p-2 rounded-r-md flex items-center" onClick={handleSendClick}>
+            <img src="src/assets/send.png" alt="send" className="w-10" />
+          </button>
+        </div>
       </div>
     </div>
+  </div>
   );
 }
 
