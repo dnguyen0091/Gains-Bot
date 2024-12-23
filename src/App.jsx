@@ -107,42 +107,51 @@ function Body() {
 
   return (
     
-    <div className="flex flex-row">
-
-      <div className="flex justify-center items-center h-full w-full mt-16 mb-16 p-4 space-around">
-        {/* Container holding Muscle Anatomy SVGS */}
-        <div className="flex flex-col items-center w-full">
-          <div className="flex w-full flex-row items-center padding-0">
-            <img src="src/assets/muscleAssets/Front/fullBodyFront.svg" alt="frontMuscleGroups" className="border-none" />
-            <img src="src/assets/muscleAssets/Back/fullBodyBack.svg" alt="backMuscleGroups" className="border-none" />
-          </div>
-      </div>
-      {/* Add a container for the chat messages */}
-      <div className="flex flex-col items-center justify-center flex-grow">
-        <div ref={chatContainerRef} className="displayChat rounded p-4 w-customBox h-customBox mb-0 overflow-y-scroll scrollbar-container">
-          {messages.map((message, index) => (
-            <ChatMessage key={index} message={message} />
-          ))}
-        </div>
-        
-        <div className="w-customBox max-w-2xl flex items-center rounded-md p-0 mt-4">
-          <input
-            type="text"
-            placeholder="Type a message"
-            className="bg-lightGrey border-none p-2 w-full rounded-l-md focus:outline-none text-white"
-            value={message}
-            onChange={handleInputChange}
-            onKeyPress={handleKeyPress}
-            disabled={loading}
-          />
-          <button className="bg-blue-500 p-2 rounded-r-md flex items-center" onClick={handleSendClick}>
-            <img src="src/assets/send.png" alt="send" className="w-10" />
-
-          </button>
-        </div>
-      </div>
+    <div className="bodyCont flex flex-row justify-between items-center w-full mt-32 mb-16 p-8 px-16">
+  {/* Muscle Anatomy Container */}
+  <div className="muscleCont flex flex-col items-center w-1/3">
+    <div className="flex flex-row items-center space-x-8">
+      <img 
+        src="/src/assets/muscleAssets/Front/fullBodyFront.svg" 
+        alt="frontMuscleGroups" 
+        className="w-64 h-auto" 
+      />
+      <img 
+        src="/src/assets/muscleAssets/Back/fullBodyBack.svg" 
+        alt="backMuscleGroups" 
+        className="w-64 h-auto" 
+      />
     </div>
   </div>
+
+  {/* Chat Container */}
+  <div className="chatCont flex flex-col items-center justify-center w-1/3">
+    <div ref={chatContainerRef} className="displayChat rounded p-4 w-full h-customBox mb-0 overflow-y-scroll scrollbar-container">
+      {messages.map((message, index) => (
+        <ChatMessage key={index} message={message} />
+      ))}
+    </div>
+    
+    <div className="w-full max-w-2xl flex items-center rounded-md p-0 mt-4">
+      <input
+        type="text"
+        placeholder="Type a message"
+        className="bg-lightGrey border-none p-2 w-full rounded-l-md focus:outline-none text-white"
+        value={message}
+        onChange={handleInputChange}
+        onKeyPress={handleKeyPress}
+        disabled={loading}
+      />
+      <button 
+        className="bg-blue-500 p-2 rounded-r-md flex items-center" 
+        onClick={handleSendClick}
+        disabled={loading}
+      >
+        <img src="/src/assets/send.png" alt="send" className="w-10" />
+      </button>
+    </div>
+  </div>
+</div>
   );
 }
 
