@@ -109,12 +109,12 @@ function Body() {
     
     <div className="flex flex-row">
 
-      <div className="flex justify-center items-center h-full w-full mt-16 mb-16 p-4">
+      <div className="flex justify-center items-center h-full w-full mt-16 mb-16 p-4 space-around">
         {/* Container holding Muscle Anatomy SVGS */}
         <div className="flex flex-col items-center w-full">
-          <div className="flex w-full">
-            <img src="src/assets/front.svg" alt="frontMuscleGroups" className="border-none" />
-            <img src="src/assets/back.svg" alt="backMuscleGroups" className="border-none" />
+          <div className="flex w-full flex-row items-center padding-0">
+            <img src="src/assets/muscleAssets/Front/fullBodyFront.svg" alt="frontMuscleGroups" className="border-none" />
+            <img src="src/assets/muscleAssets/Back/fullBodyBack.svg" alt="backMuscleGroups" className="border-none" />
           </div>
       </div>
       {/* Add a container for the chat messages */}
