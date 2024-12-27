@@ -24,7 +24,7 @@ export async function API(prompt) {
             temperature: 0.7 // Optional parameter to control the randomness of the output
         });
 
-
+        resetMuscleColor();
         checkMusclesUsed();
         // Return the response content
         return response.choices[0].message.content;
@@ -98,3 +98,25 @@ async function checkMusclesUsed()
 }
 
 
+function recolor(primary,secondary)
+{
+    // Recolor the muscles in the image
+
+    // Get the muscle images
+
+    // Recolor the primary muscles
+
+    // Recolor the secondary muscles
+
+
+}
+
+
+function resetMuscleColor()
+{
+    // Reset the muscle colors to the default
+
+    // Get the muscle images
+
+    // Reset the muscle colors
+}
