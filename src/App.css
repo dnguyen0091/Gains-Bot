@@ -1,6 +1,8 @@
 body
 {
   background-color: #333333;
+  height:100vh;
+  overflow-y: hidden;
 }
 
 
@@ -23,6 +25,19 @@ body
   margin: 0 auto;
   max-height: 100%; /* Ensure the logo doesn't exceed the header height */
 }
+
+
+.bodyCont
+{
+  align-items: space-between;
+  width:60vw;
+  padding:10px;
+  gap: 10px;
+}
+
+
+
+
 
 
 
@@ -103,8 +118,5 @@ body
 .read-the-docs {
   color: #888;
 }
-
-
-
 
 
