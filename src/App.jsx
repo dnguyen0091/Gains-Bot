@@ -107,62 +107,63 @@ function Body() {
 
   return (
     
-    <div className="bodyCont flex flex-row justify-between items-center w-full mt-32 mb-16 p-8 px-16">
-  {/* Muscle Anatomy Container */}
-  <div className="muscleCont flex flex-col items-center w-1/3">
-    <div className="flex flex-row items-center space-x-8">
-      <img 
-        src="/src/assets/muscleAssets/Front/fullBodyFront.svg" 
-        alt="frontMuscleGroups" 
-        className="w-64 h-auto" 
-      />
-      <img 
-        src="/src/assets/muscleAssets/Back/fullBodyBack.svg" 
-        alt="backMuscleGroups" 
-        className="w-64 h-auto" 
-      />
-    </div>
-  </div>
-
-  {/* Chat Container */}
-  <div className="chatCont flex flex-col items-center justify-center w-1/3">
-    <div ref={chatContainerRef} className="displayChat rounded p-4 w-full h-customBox mb-0 overflow-y-scroll scrollbar-container">
-      {messages.map((message, index) => (
-        <ChatMessage key={index} message={message} />
-      ))}
-    </div>
     
-    <div className="w-full max-w-2xl flex items-center rounded-md p-0 mt-4">
-      <input
-        type="text"
-        placeholder="Type a message"
-        className="bg-lightGrey border-none p-2 w-full rounded-l-md focus:outline-none text-white"
-        value={message}
-        onChange={handleInputChange}
-        onKeyPress={handleKeyPress}
-        disabled={loading}
-      />
-      <button 
-        className="bg-blue-500 p-2 rounded-r-md flex items-center" 
-        onClick={handleSendClick}
-        disabled={loading}
-      >
-        <img src="/src/assets/send.png" alt="send" className="w-10" />
-      </button>
+      <div className="bodyCont flex flex-row justify-between items-center mt-32 mb-16 p-8 px-16">
+      {/* Muscle Anatomy Container */}
+      <div className="muscleCont flex flex-col items-center w-1/3">
+        <div className="flex flex-row items-center space-x-8">
+          <img 
+            src="/src/assets/muscleAssets/Front/fullBodyFront.svg" 
+            alt="frontMuscleGroups" 
+            className="w-64 h-auto" 
+          />
+          <img 
+            src="/src/assets/muscleAssets/Back/fullBodyBack.svg" 
+            alt="backMuscleGroups" 
+            className="w-64 h-auto" 
+          />
+        </div>
+      </div>
+
+      {/* Chat Container */}
+      <div className="chatCont flex flex-col items-center justify-center w-2/3 gap-10">
+        <div ref={chatContainerRef} className="displayChat rounded p-4 w-full h-customBox mb-0 overflow-y-scroll scrollbar-container">
+          {messages.map((message, index) => (
+            <ChatMessage key={index} message={message} />
+          ))}
+        </div>
+        
+        <div className="w-full max-w-2xl flex items-center rounded-md p-0 mt-4">
+          <input
+            type="text"
+            placeholder="Type a message"
+            className="bg-lightGrey border-none p-2 w-full rounded-l-md focus:outline-none color-white"
+            value={message}
+            onChange={handleInputChange}
+            onKeyPress={handleKeyPress}
+            disabled={loading}
+          />
+          <button 
+            className="bg-blue-500 p-2 rounded-r-md flex items-center" 
+            onClick={handleSendClick}
+            disabled={loading}
+          >
+            <img src="/src/assets/send.png" alt="send" className="w-10" />
+          </button>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
   );
 }
 
 // Footer component
 function Footer() {
   return (
-    <div className="bg-darkGrey2 flex justify-center items-center h-16 w-full fixed bottom-0 left-0 right-0">
+    <div className="bg-darkGrey2 flex justify-center items-center h-20 w-full fixed bottom-0 left-0 right-0">
       {/* container for the credits perhaps change it to a link to GitHub profile */}
       <div className="flex items-center gap-4">
         <img src="src/assets/github.png" alt="github" id="githubLogo" />
-        <p className="text-white">Created by dnguyen0091</p>
+        <p className="text-white">Created by dnguyen0091©</p>
       </div>
     </div>
   );
