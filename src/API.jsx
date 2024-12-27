@@ -24,6 +24,8 @@ export async function API(prompt) {
             temperature: 0.7 // Optional parameter to control the randomness of the output
         });
 
+
+        checkMusclesUsed();
         // Return the response content
         return response.choices[0].message.content;
     } catch (error) {
@@ -33,43 +35,66 @@ export async function API(prompt) {
     }
 }
 
+async function checkMusclesUsed()
+{
+    //List of all muscle groups in the body
+
+    const muscleList = {
+        "biceps": "biceps", //mapping keyword to muscle group ID
 
 
+    };
+    //Check which are being used in the prompt
+    const prompt = `Based on the last question, list the muscles used as follows:
+    Primary: [muscle names]
+    Secondary: [muscle names]
+    Only use muscles from this list: ${muscleList}`;
+    const response = await openai.chat.completions.create({
+        model: "gpt-3.5-turbo", // Specify the model to use
 
+        messages: [
+            {
+                role: "system",
+                content: "You are a helpful fitness trainer. Respond only with Primary and Secondary muscle lists."
+            },
+            {
+                role: "user",
+                content: prompt
+            }
+        ],
+        temperature: 0.7 // Optional parameter to control the randomness of the output
+        });
 
-// function recolor(svg, muscleGroups) {
-//     // Assuming muscleGroups is an array of muscle names to highlight
-//     const muscleColors = {
-//         primary: "#ff0000",    // Red for primary muscles
-//         secondary: "#ff9999"   // Light red for secondary muscles
-//     };
-
-//     try {
-//         // Get all muscle group paths within the SVG
-//         const musclePaths = svg.querySelectorAll('path[data-muscle]');
+        //If a muscle is used, add it to an array
+        const primaryMuscles = [];
+        const secondaryMuscles = [];
+        const musclesUsed = response.choices[0].message.content;
         
-//         // Reset all muscles to default color
-//         musclePaths.forEach(path => {
-//             path.style.fill = "#cccccc"; // Default gray
-//         });
+        const primaryMatch = musclesUsed.match(/Primary:\s*(.*?)(?=\n|$)/i);
+        const secondaryMatch = musclesUsed.match(/Secondary:\s*(.*?)(?=\n|$)/i);
 
-//         // Highlight specified muscle groups
-//         muscleGroups.forEach(muscle => {
-//             const musclePath = svg.querySelector(`path[data-muscle="${muscle.name}"]`);
-//             if (musclePath) {
-//                 musclePath.style.fill = muscle.isPrimary ? muscleColors.primary : muscleColors.secondary;
-//             }
-//         });
-//     } catch (error) {
-//         console.error('Error recoloring SVG:', error);
-//     }
-// }
+        if (primaryMatch) {
+            const primaryList = primaryMatch[1].split(',').map(m => m.trim().toLowerCase());
+            primaryMuscles.push(...primaryList.filter(muscle => muscleList[muscle]));
+          }
+        
+          if (secondaryMatch) {
+            const secondaryList = secondaryMatch[1].split(',').map(m => m.trim().toLowerCase());
+            secondaryMuscles.push(...secondaryList.filter(muscle => muscleList[muscle]));
+          }
 
-// // Usage example:
-// const muscleGroups = [
-//     { name: "biceps", isPrimary: true },
-//     { name: "forearms", isPrimary: false }
-// ];
+        const primary= primaryMuscles.map(muscle => muscleList);
+        const secondary= secondaryMuscles.map(muscle => muscleList);
+        
 
+        recolor(primary, secondary);
+        
+        //Call recolor function with the array of muscles
+    
+
+    
+
+
+}
 
 
