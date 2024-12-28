@@ -98,17 +98,55 @@ async function checkMusclesUsed()
 }
 
 
-function recolor(primary,secondary)
-{
-    // Recolor the muscles in the image
+function recolor(primary, secondary) {
+    try {
+        // Get the SVGs
+        const frontSvg = document.querySelector(".frontSvg");
+        const backSvg = document.querySelector(".backSvg");
 
-    // Get the muscle images
+        // Wait for SVGs to load
+        if (frontSvg && backSvg) {
+            // Primary muscles
+            primary.forEach(muscle => {
+                try {
+                    // Try front SVG first
+                    const frontElement = frontSvg.getSVGDocument().getElementById(muscle);
+                    if (frontElement) {
+                        frontElement.setAttribute("id", "st1"); // Use class for red color
+                    }
 
-    // Recolor the primary muscles
+                    // Try back SVG
+                    const backElement = backSvg.getSVGDocument().getElementById(muscle);
+                    if (backElement) {
+                        backElement.setAttribute("id", "st1"); // Use class for red color
+                    }
+                } catch {
+                    console.warn(`Could not find muscle: ${muscle}`);
+                }
+            });
 
-    // Recolor the secondary muscles
+            // Secondary muscles
+            secondary.forEach(muscle => {
+                try {
+                    // Try front SVG first 
+                    const frontElement = frontSvg.getSVGDocument().getElementById(muscle);
+                    if (frontElement) {
+                        frontElement.setAttribute("id", "st2"); // Use class for lighter red
+                    }
 
-
+                    // Try back SVG
+                    const backElement = backSvg.getSVGDocument().getElementById(muscle);
+                    if (backElement) {
+                        backElement.setAttribute("id", "st2"); // Use class for lighter red
+                    }
+                } catch {
+                    console.warn(`Could not find muscle: ${muscle}`);
+                }
+            });
+        }
+    } catch (err) {
+        console.error('Error recoloring muscles:', err);
+    }
 }
 
 
