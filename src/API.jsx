@@ -155,6 +155,37 @@ function resetMuscleColor()
     // Reset the muscle colors to the default
 
     // Get the muscle images
+    try
+    {
+        const frontSvg = document.querySelector(".frontSvg");
+        const backSvg = document.querySelector(".backSvg");
 
+        try
+        {
+            if(frontSvg&&backSvg)
+            {
+                // Get all the muscle elements
+                const frontMuscles = frontSvg.getSVGDocument().getElementsByTagName("g");
+                const backMuscles = backSvg.getSVGDocument().getElementsByTagName("g");
+
+                // Reset the color of each muscle
+                frontMuscles.forEach(muscle => {
+                    muscle.setAttribute("id", "st0");
+                });
+
+                backMuscles.forEach(muscle => {
+                    muscle.setAttribute("id", "st0");
+                });
+            }
+        }
+        catch(err)
+        {
+            console.error('Error resetting muscle colors:', err);
+        }
+    }
     // Reset the muscle colors
+    catch(err)
+    {
+        console.error('Error resetting muscle colors:', err);
+    }
 }
