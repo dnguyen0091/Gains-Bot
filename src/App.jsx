@@ -115,12 +115,12 @@ function Body() {
           <img 
             src="/src/assets/muscleAssets/Front/fullBodyFront.svg" 
             alt="frontMuscleGroups" 
-            className="w-64 h-auto" 
+            className="frontSvg w-64 h-auto" 
           />
           <img 
             src="/src/assets/muscleAssets/Back/fullBodyBack.svg" 
             alt="backMuscleGroups" 
-            className="w-64 h-auto" 
+            className="backSvg w-64 h-auto" 
           />
         </div>
       </div>
