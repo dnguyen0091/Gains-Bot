@@ -40,10 +40,10 @@ const ChatMessage = ({ message }) => {
 
   return (
     <div className={`flex ${isUser ? 'justify-end' : 'justify-start'} mb-4`}>
-      <div className={`max-w-[70%] p-3 text-white ${
+      <div className={`chatBubble max-w-[70%] p-3 text-white ${
         isUser 
-          ? 'bg-gray-700 rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl'
-          : 'bg-gray-700 rounded-tl-2xl rounded-tr-2xl rounded-br-2xl'
+          ? 'rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl'
+          : 'rounded-tl-2xl rounded-tr-2xl rounded-br-2xl'
       }`}>
         {message.text}
       </div>
@@ -108,10 +108,10 @@ function Body() {
   return (
     
     
-      <div className="bodyCont flex flex-row justify-between items-center mt-32 mb-16 p-8 px-16">
+      <div className="bodyCont">
       {/* Muscle Anatomy Container */}
-      <div className="muscleCont flex flex-col items-center w-1/3">
-        <div className="flex flex-row items-center space-x-8">
+      <div className="muscleCont flex">
+        <div className="muscleSvgCont">
           <img 
             src="/src/assets/muscleAssets/Front/fullBodyFront.svg" 
             alt="frontMuscleGroups" 
@@ -126,7 +126,7 @@ function Body() {
       </div>
 
       {/* Chat Container */}
-      <div className="chatCont flex flex-col items-center justify-center w-2/3 gap-10">
+      <div className="chatCont">
         <div ref={chatContainerRef} className="displayChat rounded p-4 w-full h-customBox mb-0 overflow-y-scroll scrollbar-container">
           {messages.map((message, index) => (
             <ChatMessage key={index} message={message} />
@@ -137,7 +137,7 @@ function Body() {
           <input
             type="text"
             placeholder="Type a message"
-            className="bg-lightGrey border-none p-2 w-full rounded-l-md focus:outline-none color-white"
+            className="inputBar  border-none p-2 w-full rounded-l-md focus:outline-none color-white"
             value={message}
             onChange={handleInputChange}
             onKeyPress={handleKeyPress}
