@@ -14,7 +14,7 @@ export async function API(prompt) {
             messages: [
                 {
                     role: "system",
-                    content: "You are a helpful fitness trainer who focuses on muscle hypertrophy techniques."
+                    content: "You are a helpful fitness trainer who focuses on muscle hypertrophy techniques. You simplify complex fitness concepts for your clients."
                 },
                 {
                     role: "user",
@@ -24,7 +24,7 @@ export async function API(prompt) {
             temperature: 0.7 // Optional parameter to control the randomness of the output
         });
 
-        resetMuscleColor();
+        // resetMuscleColor();
         checkMusclesUsed();
         // Return the response content
         return response.choices[0].message.content;
@@ -35,67 +35,64 @@ export async function API(prompt) {
     }
 }
 
-async function checkMusclesUsed()
-{
-    //List of all muscle groups in the body
-
+async function checkMusclesUsed() {
     const muscleList = {
-        "biceps": "biceps", //mapping keyword to muscle group ID
-        "gluteusmedius" : "GluteusMedius",
-        "lowerabsupper" : "LowerAbsUpper",
-        "peroneuslongus" : "PeroneusLongus",
-        "soleus" : "Soleus",
-        "calvesmedialhead" : "CalvesMedialHead",
-        "outerquads" : "OuterQuads",
-        "innerquads" : "InnerQuads",
-        "midquad" : "MidQuad",
-        "sartoriusinnerleg" : "SartoriusInnerLeg",
-        "pectiniusinnergroinmuscle" : "PectiniusInnerGroinMuscle",
-        "extensorforearmlower" : "ExtensorForearmLower",
-        "flexordigitoriumunderarm" : "FlexorDigitoriumUnderArm",
-        "brachioradialisforarmupper" : "BrachioradialisForArmUpper",
-        "forearmupper" : "ForearmUpper",
-        "upperabs" : "UpperAbs",
-        "lowerabs" : "LowerAbs",
-        "serratusanterior" : "SerratusAnterior",
-        "obliquesexternal" : "ObliquesExternal",
-        "bicepsbrachialis" : "BicepsBrachialis",
-        "sternocleids" : "Sternocleids",
-        "scm" : "Scm",
-        "fronttraps" : "FrontTraps",
-        "tricepslonghead" : "TricepsLongHead",
-        "bicepsbrachii" : "BicepsBrachii",
-        "deltoidsfront" : "DeltoidsFront",
-        "pecs" : "Pecs",
-        "tricepslateralhead" : "TricepsLateralHead",
-        "rhomboidmajor" : "RhomboidMajor",
-        "semimembranosis" : "Semimembranosis",
-        "traps" : "Traps",
-        "calves" : "Calves",
-        "delts" : "Delts",
-        "middleandlowertraps" : "MiddleAndLowerTraps",
-        "infraspinatus" : "Infraspinatus",
-        "teresmajor" : "TeresMajor",
-        "lats" : "Lats",
-        "triceps" : "Triceps",
-        "obliques" : "Obliques",
-        "upperoblilques" : "UpperOblilques",
-        "extensorcarpi" : "ExtensorCarpi",
-        "extensordigitorum" : "ExtensorDigitorum",
-        "extensorcarpiulnaris" : "ExtensorCarpiUlnaris",
-        "gluteusmaximus" : "GluteusMaximus",
-        "semitedinosis" : "SemiTedinosis",
-        "upperinnerhamstring" : "UpperInnerHamstring",
-        "bicepsfemoris" : "BicepsFemoris",
+        "biceps": "biceps",
+        "gluteusmedius": "GluteusMedius",
+        "lowerabsupper": "LowerAbsUpper",
+        "peroneuslongus": "PeroneusLongus",
+        "soleus": "Soleus",
+        "calvesmedialhead": "CalvesMedialHead",
+        "outerquads": "OuterQuads",
+        "innerquads": "InnerQuads",
+        "midquad": "MidQuad",
+        "sartoriusinnerleg": "SartoriusInnerLeg",
+        "pectiniusinnergroinmuscle": "PectiniusInnerGroinMuscle",
+        "extensorforearmlower": "ExtensorForearmLower",
+        "flexordigitoriumunderarm": "FlexorDigitoriumUnderArm",
+        "brachioradialisforarmupper": "BrachioradialisForArmUpper",
+        "forearmupper": "ForearmUpper",
+        "upperabs": "UpperAbs",
+        "lowerabs": "LowerAbs",
+        "serratusanterior": "SerratusAnterior",
+        "obliquesexternal": "ObliquesExternal",
+        "bicepsbrachialis": "BicepsBrachialis",
+        "sternocleids": "Sternocleids",
+        "scm": "Scm",
+        "fronttraps": "FrontTraps",
+        "tricepslonghead": "TricepsLongHead",
+        "bicepsbrachii": "BicepsBrachii",
+        "deltoidsfront": "DeltoidsFront",
+        "pecs": "Pecs",
+        "tricepslateralhead": "TricepsLateralHead",
+        "rhomboidmajor": "RhomboidMajor",
+        "semimembranosis": "Semimembranosis",
+        "traps": "Traps",
+        "calves": "Calves",
+        "delts": "Delts",
+        "middleandlowertraps": "MiddleAndLowerTraps",
+        "infraspinatus": "Infraspinatus",
+        "teresmajor": "TeresMajor",
+        "lats": "Lats",
+        "triceps": "Triceps",
+        "obliques": "Obliques",
+        "upperoblilques": "UpperOblilques",
+        "extensorcarpi": "ExtensorCarpi",
+        "extensordigitorum": "ExtensorDigitorum",
+        "extensorcarpiulnaris": "ExtensorCarpiUlnaris",
+        "gluteusmaximus": "GluteusMaximus",
+        "semitedinosis": "SemiTedinosis",
+        "upperinnerhamstring": "UpperInnerHamstring",
+        "bicepsfemoris": "BicepsFemoris",
     };
-    //Check which are being used in the prompt
+
     const prompt = `Based on the last question, list the muscles used as follows:
     Primary: [muscle names]
     Secondary: [muscle names]
-    Only use muscles from this list: ${muscleList}`;
-    const response = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo", // Specify the model to use
+    Only use muscles from this list: ${Object.keys(muscleList).join(', ')}`;
 
+    const response = await openai.chat.completions.create({
+        model: "gpt-3.5-turbo",
         messages: [
             {
                 role: "system",
@@ -106,130 +103,107 @@ async function checkMusclesUsed()
                 content: prompt
             }
         ],
-        temperature: 0.7 // Optional parameter to control the randomness of the output
-        });
+        temperature: 0.7
+    });
 
-        //If a muscle is used, add it to an array
-        const primaryMuscles = [];
-        const secondaryMuscles = [];
-        const musclesUsed = response.choices[0].message.content;
-        
-        const primaryMatch = musclesUsed.match(/Primary:\s*(.*?)(?=\n|$)/i);
-        const secondaryMatch = musclesUsed.match(/Secondary:\s*(.*?)(?=\n|$)/i);
+    const primaryMuscles = [];
+    const secondaryMuscles = [];
+    const musclesUsed = response.choices[0].message.content;
 
-        if (primaryMatch) {
-            const primaryList = primaryMatch[1].split(',').map(m => m.trim().toLowerCase());
-            primaryMuscles.push(...primaryList.filter(muscle => muscleList[muscle]));
-          }
-        
-          if (secondaryMatch) {
-            const secondaryList = secondaryMatch[1].split(',').map(m => m.trim().toLowerCase());
-            secondaryMuscles.push(...secondaryList.filter(muscle => muscleList[muscle]));
-          }
+    const primaryMatch = musclesUsed.match(/Primary:\s*(.*?)(?=\n|$)/i);
+    const secondaryMatch = musclesUsed.match(/Secondary:\s*(.*?)(?=\n|$)/i);
 
-        const primary= primaryMuscles.map(muscle => muscleList);
-        const secondary= secondaryMuscles.map(muscle => muscleList);
-        
+    if (primaryMatch) {
+        const primaryList = primaryMatch[1].split(',').map(m => m.trim().toLowerCase());
+        primaryMuscles.push(...primaryList.filter(muscle => muscleList[muscle]));
+    }
 
-        recolor(primary, secondary);
-        
-        //Call recolor function with the array of muscles
-    
+    if (secondaryMatch) {
+        const secondaryList = secondaryMatch[1].split(',').map(m => m.trim().toLowerCase());
+        secondaryMuscles.push(...secondaryList.filter(muscle => muscleList[muscle]));
+    }
 
-    
+    const primary = primaryMuscles.map(muscle => muscleList[muscle]);
+    const secondary = secondaryMuscles.map(muscle => muscleList[muscle]);
 
-
+    recolor(primary, secondary);
 }
 
 
 function recolor(primary, secondary) {
     try {
-        // Get the SVGs
-        const frontSvg = document.querySelector(".frontSvg");
-        const backSvg = document.querySelector(".backSvg");
+        const frontSvg = document.querySelector(".frontSvg").contentDocument;
+        const testing = frontSvg.querySelector('path');
+        console.log(testing);
 
-        // Wait for SVGs to load
-        if (frontSvg && backSvg) {
-            // Primary muscles
-            primary.forEach(muscle => {
-                try {
-                    // Try front SVG first
-                    const frontElement = frontSvg.getSVGDocument().getElementById(muscle);
-                    if (frontElement) {
-                        frontElement.setAttribute("id", "st1"); // Use class for red color
-                    }
+        testing.style.fill="red";
+        // if (frontSvg && backSvg) {
+        //     // Reset all paths
+        //     frontSvg.querySelectorAll('path[class^="st"]').forEach(path => {
+        //         path.setAttribute("class", "st0");
+        //     });
+        //     backSvg.querySelectorAll('path[class^="st"]').forEach(path => {
+        //         path.setAttribute("class", "st0");
+        //     });
 
-                    // Try back SVG
-                    const backElement = backSvg.getSVGDocument().getElementById(muscle);
-                    if (backElement) {
-                        backElement.setAttribute("id", "st1"); // Use class for red color
-                    }
-                } catch {
-                    console.warn(`Could not find muscle: ${muscle}`);
-                }
-            });
+        //     // Color primary muscles
+        //     primary.forEach(muscle => {
+        //         const frontElement = frontSvg.getElementById(muscle);
+        //         if (frontElement) {
+        //             frontElement.querySelectorAll('path').forEach(path => {
+        //                 path.setAttribute("class", "st1");
+        //             });
+        //         }
 
-            // Secondary muscles
-            secondary.forEach(muscle => {
-                try {
-                    // Try front SVG first 
-                    const frontElement = frontSvg.getSVGDocument().getElementById(muscle);
-                    if (frontElement) {
-                        frontElement.setAttribute("id", "st2"); // Use class for lighter red
-                    }
+        //         const backElement = backSvg.getElementById(muscle);
+        //         if (backElement) {
+        //             backElement.querySelectorAll('path').forEach(path => {
+        //                 path.setAttribute("class", "st1");
+        //             });
+        //         }
+        //     });
 
-                    // Try back SVG
-                    const backElement = backSvg.getSVGDocument().getElementById(muscle);
-                    if (backElement) {
-                        backElement.setAttribute("id", "st2"); // Use class for lighter red
-                    }
-                } catch {
-                    console.warn(`Could not find muscle: ${muscle}`);
-                }
-            });
-        }
+        //     // Color secondary muscles
+        //     secondary.forEach(muscle => {
+        //         const frontElement = frontSvg.getElementById(muscle);
+        //         if (frontElement) {
+        //             frontElement.querySelectorAll('path').forEach(path => {
+        //                 path.setAttribute("class", "st2");
+        //             });
+        //         }
+
+        //         const backElement = backSvg.getElementById(muscle);
+        //         if (backElement) {
+        //             backElement.querySelectorAll('path').forEach(path => {
+        //                 path.setAttribute("class", "st2");
+        //             });
+        //         }
+        //     });
+        // }
     } catch (err) {
         console.error('Error recoloring muscles:', err);
     }
 }
 
 
-function resetMuscleColor()
-{
-    // Reset the muscle colors to the default
-
-    // Get the muscle images
-    try
-    {
+function resetMuscleColor() {
+    try {
         const frontSvg = document.querySelector(".frontSvg");
         const backSvg = document.querySelector(".backSvg");
 
-        try
-        {
-            if(frontSvg&&backSvg)
-            {
-                // Get all the muscle elements
-                const frontMuscles = frontSvg.getSVGDocument().getElementsByTagName("g");
-                const backMuscles = backSvg.getSVGDocument().getElementsByTagName("g");
+        if (frontSvg && backSvg) {
+            const frontMuscles = frontSvg.getSVGDocument().querySelectorAll('path[class^="st"]');
+            const backMuscles = backSvg.getSVGDocument().querySelectorAll('path[class^="st"]');
 
-                // Reset the color of each muscle
-                frontMuscles.forEach(muscle => {
-                    muscle.setAttribute("id", "st0");
-                });
+            frontMuscles.forEach(muscle => {
+                muscle.setAttribute("class", "st0");
+            });
 
-                backMuscles.forEach(muscle => {
-                    muscle.setAttribute("id", "st0");
-                });
-            }
+            backMuscles.forEach(muscle => {
+                muscle.setAttribute("class", "st0");
+            });
         }
-        catch(err)
-        {
-            console.error('Error resetting muscle colors:', err);
-        }
-    }
-    // Reset the muscle colors
-    catch(err)
-    {
+    } catch (err) {
         console.error('Error resetting muscle colors:', err);
     }
 }
