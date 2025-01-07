@@ -1,8 +1,28 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { API } from './API.jsx';
-import './App.css'; // Ensure this file is correctly imported
+import './App.css';
+import BackSvg from './assets/muscleAssets/Back/fullBodyBack.svg?react';
+import FrontSvg from './assets/muscleAssets/Front/fullBodyFront.svg?react';
 
 function App() {
+  useEffect(() => {
+    const frontSvg = document.querySelector(".frontSvg");
+    const backSvg = document.querySelector(".backSvg");
+
+    frontSvg.addEventListener('load', () => {
+      checkMusclesUsed();
+    });
+
+    backSvg.addEventListener('load', () => {
+      checkMusclesUsed();
+    });
+  }, []);
+
+  const checkMusclesUsed = () => {
+    // Define the logic for checking muscles used
+    console.log('Checking muscles used...');
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -106,22 +126,12 @@ function Body() {
   };
 
   return (
-    
-    
-      <div className="bodyCont">
+    <div className="bodyCont">
       {/* Muscle Anatomy Container */}
       <div className="muscleCont flex">
         <div className="muscleSvgCont">
-          <img 
-            src="/src/assets/muscleAssets/Front/fullBodyFront.svg" 
-            alt="frontMuscleGroups" 
-            className="frontSvg w-64 h-auto" 
-          />
-          <img 
-            src="/src/assets/muscleAssets/Back/fullBodyBack.svg" 
-            alt="backMuscleGroups" 
-            className="backSvg w-64 h-auto" 
-          />
+          <FrontSvg className="frontSvg w-64 h-auto" />
+          <BackSvg className="backSvg w-64 h-auto" />
         </div>
       </div>
 
