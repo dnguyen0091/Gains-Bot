@@ -24,7 +24,7 @@ export async function API(prompt) {
             temperature: 0.7 // Optional parameter to control the randomness of the output
         });
 
-        // resetMuscleColor();
+        
         checkMusclesUsed();
         // Return the response content
         return response.choices[0].message.content;
@@ -126,52 +126,50 @@ async function checkMusclesUsed() {
     const primary = primaryMuscles.map(muscle => muscleList[muscle]);
     const secondary = secondaryMuscles.map(muscle => muscleList[muscle]);
 
+    console.log('Primary:', primary);
+    console.log('Secondary:', secondary);
     recolor(primary, secondary);
 }
 
 
 function recolor(primary, secondary) {
     try {
-        const frontSvg = document.querySelector("FrontSvg");
-        const backSvg = document.querySelector("BackSvg");
+        const frontSvg = document.querySelector(".frontSvg");
+        const backSvg = document.querySelector(".backSvg");
 
         if (frontSvg && backSvg) {
-            // Reset all paths
-            document.querySelectorAll('path[class^="st"]').forEach(path => {
+            // Reset all paths to default class (st0)
+            document.querySelectorAll('[class^="st"]').forEach(path => {
                 path.setAttribute("class", "st0");
             });
 
-            // Color primary muscles
+            // Color primary muscles with st1 class
             primary.forEach(muscle => {
+                // Front view
                 const frontElement = frontSvg.querySelector(`#${muscle}`);
                 if (frontElement) {
-                    frontElement.querySelectorAll('path').forEach(path => {
-                        path.setAttribute("class", "st1");
-                    });
+                    frontElement.setAttribute("class", "st1");
                 }
 
+                // Back view
                 const backElement = backSvg.querySelector(`#${muscle}`);
                 if (backElement) {
-                    backElement.querySelectorAll('path').forEach(path => {
-                        path.setAttribute("class", "st1");
-                    });
+                    backElement.setAttribute("class", "st1");
                 }
             });
 
-            // Color secondary muscles
+            // Color secondary muscles with st2 class
             secondary.forEach(muscle => {
+                // Front view
                 const frontElement = frontSvg.querySelector(`#${muscle}`);
                 if (frontElement) {
-                    frontElement.querySelectorAll('path').forEach(path => {
-                        path.setAttribute("class", "st2");
-                    });
+                    frontElement.setAttribute("class", "st2");
                 }
 
+                // Back view
                 const backElement = backSvg.querySelector(`#${muscle}`);
                 if (backElement) {
-                    backElement.querySelectorAll('path').forEach(path => {
-                        path.setAttribute("class", "st2");
-                    });
+                    backElement.setAttribute("class", "st2");
                 }
             });
         }
@@ -179,26 +177,3 @@ function recolor(primary, secondary) {
         console.error('Error recoloring muscles:', err);
     }
 }
-
-
-// function resetMuscleColor() {
-//     try {
-//         const frontSvg = document.querySelector(".frontSvg");
-//         const backSvg = document.querySelector(".backSvg");
-
-//         if (frontSvg && backSvg) {
-//             const frontMuscles = frontSvg.getSVGDocument().querySelectorAll('path[class^="st"]');
-//             const backMuscles = backSvg.getSVGDocument().querySelectorAll('path[class^="st"]');
-
-//             frontMuscles.forEach(muscle => {
-//                 muscle.setAttribute("class", "st0");
-//             });
-
-//             backMuscles.forEach(muscle => {
-//                 muscle.setAttribute("class", "st0");
-//             });
-//         }
-//     } catch (err) {
-//         console.error('Error resetting muscle colors:', err);
-//     }
-// }
