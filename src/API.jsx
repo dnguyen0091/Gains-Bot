@@ -132,78 +132,73 @@ async function checkMusclesUsed() {
 
 function recolor(primary, secondary) {
     try {
-        const frontSvg = document.querySelector(".frontSvg").contentDocument;
-        const testing = frontSvg.querySelector('path');
-        console.log(testing);
+        const frontSvg = document.querySelector("FrontSvg");
+        const backSvg = document.querySelector("BackSvg");
 
-        testing.style.fill="red";
-        // if (frontSvg && backSvg) {
-        //     // Reset all paths
-        //     frontSvg.querySelectorAll('path[class^="st"]').forEach(path => {
-        //         path.setAttribute("class", "st0");
-        //     });
-        //     backSvg.querySelectorAll('path[class^="st"]').forEach(path => {
-        //         path.setAttribute("class", "st0");
-        //     });
+        if (frontSvg && backSvg) {
+            // Reset all paths
+            document.querySelectorAll('path[class^="st"]').forEach(path => {
+                path.setAttribute("class", "st0");
+            });
 
-        //     // Color primary muscles
-        //     primary.forEach(muscle => {
-        //         const frontElement = frontSvg.getElementById(muscle);
-        //         if (frontElement) {
-        //             frontElement.querySelectorAll('path').forEach(path => {
-        //                 path.setAttribute("class", "st1");
-        //             });
-        //         }
+            // Color primary muscles
+            primary.forEach(muscle => {
+                const frontElement = frontSvg.querySelector(`#${muscle}`);
+                if (frontElement) {
+                    frontElement.querySelectorAll('path').forEach(path => {
+                        path.setAttribute("class", "st1");
+                    });
+                }
 
-        //         const backElement = backSvg.getElementById(muscle);
-        //         if (backElement) {
-        //             backElement.querySelectorAll('path').forEach(path => {
-        //                 path.setAttribute("class", "st1");
-        //             });
-        //         }
-        //     });
+                const backElement = backSvg.querySelector(`#${muscle}`);
+                if (backElement) {
+                    backElement.querySelectorAll('path').forEach(path => {
+                        path.setAttribute("class", "st1");
+                    });
+                }
+            });
 
-        //     // Color secondary muscles
-        //     secondary.forEach(muscle => {
-        //         const frontElement = frontSvg.getElementById(muscle);
-        //         if (frontElement) {
-        //             frontElement.querySelectorAll('path').forEach(path => {
-        //                 path.setAttribute("class", "st2");
-        //             });
-        //         }
+            // Color secondary muscles
+            secondary.forEach(muscle => {
+                const frontElement = frontSvg.querySelector(`#${muscle}`);
+                if (frontElement) {
+                    frontElement.querySelectorAll('path').forEach(path => {
+                        path.setAttribute("class", "st2");
+                    });
+                }
 
-        //         const backElement = backSvg.getElementById(muscle);
-        //         if (backElement) {
-        //             backElement.querySelectorAll('path').forEach(path => {
-        //                 path.setAttribute("class", "st2");
-        //             });
-        //         }
-        //     });
-        // }
+                const backElement = backSvg.querySelector(`#${muscle}`);
+                if (backElement) {
+                    backElement.querySelectorAll('path').forEach(path => {
+                        path.setAttribute("class", "st2");
+                    });
+                }
+            });
+        }
     } catch (err) {
         console.error('Error recoloring muscles:', err);
     }
 }
 
 
-function resetMuscleColor() {
-    try {
-        const frontSvg = document.querySelector(".frontSvg");
-        const backSvg = document.querySelector(".backSvg");
+// function resetMuscleColor() {
+//     try {
+//         const frontSvg = document.querySelector(".frontSvg");
+//         const backSvg = document.querySelector(".backSvg");
 
-        if (frontSvg && backSvg) {
-            const frontMuscles = frontSvg.getSVGDocument().querySelectorAll('path[class^="st"]');
-            const backMuscles = backSvg.getSVGDocument().querySelectorAll('path[class^="st"]');
+//         if (frontSvg && backSvg) {
+//             const frontMuscles = frontSvg.getSVGDocument().querySelectorAll('path[class^="st"]');
+//             const backMuscles = backSvg.getSVGDocument().querySelectorAll('path[class^="st"]');
 
-            frontMuscles.forEach(muscle => {
-                muscle.setAttribute("class", "st0");
-            });
+//             frontMuscles.forEach(muscle => {
+//                 muscle.setAttribute("class", "st0");
+//             });
 
-            backMuscles.forEach(muscle => {
-                muscle.setAttribute("class", "st0");
-            });
-        }
-    } catch (err) {
-        console.error('Error resetting muscle colors:', err);
-    }
-}
+//             backMuscles.forEach(muscle => {
+//                 muscle.setAttribute("class", "st0");
+//             });
+//         }
+//     } catch (err) {
+//         console.error('Error resetting muscle colors:', err);
+//     }
+// }
