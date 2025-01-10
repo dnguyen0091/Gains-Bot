@@ -10,22 +10,22 @@ export async function API(prompt) {
     try {
         // Make a request to the OpenAI API
         const response = await openai.chat.completions.create({
-            model: "gpt-3.5-turbo", // Specify the model to use
+            model: "gpt-4o-mini", // Specify the model to use
             messages: [
                 {
                     role: "system",
-                    content: "You are a helpful fitness trainer who focuses on muscle hypertrophy techniques. You simplify complex fitness concepts for your clients."
+                    content: "You are a helpful personal trainer. Please answer the user's question in simple terms."
                 },
                 {
                     role: "user",
                     content: prompt
                 }
             ],
-            temperature: 0.7 // Optional parameter to control the randomness of the output
+            temperature: 0.5 // Optional parameter to control the randomness of the output
         });
 
         
-        checkMusclesUsed();
+        checkMusclesUsed(response.choices[0].message.content);
         // Return the response content
         return response.choices[0].message.content;
     } catch (error) {
@@ -35,9 +35,9 @@ export async function API(prompt) {
     }
 }
 
-async function checkMusclesUsed() {
+async function checkMusclesUsed(previousResponse) {
     const muscleList = {
-        "biceps": "biceps",
+        // "biceps": "biceps",
         "gluteusmedius": "GluteusMedius",
         "lowerabsupper": "LowerAbsUpper",
         "peroneuslongus": "PeroneusLongus",
@@ -85,27 +85,37 @@ async function checkMusclesUsed() {
         "upperinnerhamstring": "UpperInnerHamstring",
         "bicepsfemoris": "BicepsFemoris",
     };
+    console.log('Muscle List:', muscleList);
+    const prompt =`Analyze this text and categorize the mentioned muscles into primary and secondary groups:
+    "${previousResponse}"
 
-    const prompt = `Based on the last question, list the muscles used as follows:
-    Primary: [muscle names]
-    Secondary: [muscle names]
-    Only use muscles from this list: ${Object.keys(muscleList).join(', ')}`;
+    Use ONLY muscles from this list: ${Object.keys(muscleList).join(', ')}
+
+    Rules:
+    - Primary muscles are the main target muscles
+    - Secondary muscles assist or stabilize
+    - Only include muscles explicitly mentioned
+    - If not in the provided list, exclude it
+
+    Respond EXACTLY in this format:
+    Primary: [comma-separated list here]
+    Secondary: [comma-separated list here]`;
 
     const response = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo",
+        model: "gpt-4o-mini",
         messages: [
             {
                 role: "system",
-                content: "You are a helpful fitness trainer. Respond only with Primary and Secondary muscle lists."
+                content: "You are a fitness expert. Analyze exercise descriptions and categorize muscles into primary and secondary groups. Only respond in the specified format."
             },
             {
                 role: "user",
                 content: prompt
             }
         ],
-        temperature: 0.7
+        temperature: 0.3  // Lower temperature for more consistent formatting
     });
-
+    console.log(response.choices[0].message.content);
     const primaryMuscles = [];
     const secondaryMuscles = [];
     const musclesUsed = response.choices[0].message.content;
@@ -140,37 +150,29 @@ function recolor(primary, secondary) {
         if (frontSvg && backSvg) {
             // Reset all paths to default class (st0)
             document.querySelectorAll('[class^="st"]').forEach(path => {
-                path.setAttribute("class", "st0");
+                path.setAttribute("class", "st1");
             });
 
             // Color primary muscles with st1 class
             primary.forEach(muscle => {
                 // Front view
-                const frontElement = frontSvg.querySelector(`#${muscle}`);
-                if (frontElement) {
-                    frontElement.setAttribute("class", "st1");
-                }
+                const frontElements = frontSvg.querySelectorAll(`#${muscle}`);
+                frontElements.forEach(el => el.setAttribute("class", "st2"));
 
                 // Back view
-                const backElement = backSvg.querySelector(`#${muscle}`);
-                if (backElement) {
-                    backElement.setAttribute("class", "st1");
-                }
+                const backElements = backSvg.querySelectorAll(`#${muscle}`);
+                backElements.forEach(el => el.setAttribute("class", "st2"));
             });
 
             // Color secondary muscles with st2 class
             secondary.forEach(muscle => {
                 // Front view
                 const frontElement = frontSvg.querySelector(`#${muscle}`);
-                if (frontElement) {
-                    frontElement.setAttribute("class", "st2");
-                }
+                frontElement.forEach(el => el.setAttribute("class", "st3"));
 
                 // Back view
                 const backElement = backSvg.querySelector(`#${muscle}`);
-                if (backElement) {
-                    backElement.setAttribute("class", "st2");
-                }
+                backElement.forEach(el => el.setAttribute("class", "st3"));
             });
         }
     } catch (err) {
