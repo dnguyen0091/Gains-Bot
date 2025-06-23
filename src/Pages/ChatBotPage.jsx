@@ -5,7 +5,7 @@ import Header from '../Components/Header';
 export default function ChatBotPage()
 {
     return(
-        <div className="flex flex-col min-h-screen">
+        <div className="min-h-screen">
             <Header />
             <ChatFeature />
             <Footer />
