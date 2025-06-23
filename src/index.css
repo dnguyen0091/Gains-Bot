@@ -2,3 +2,77 @@
 @tailwind components;
 @tailwind utilities;
 
+
+#root
+{
+  font-family: 'JetBrains Mono', monospace;
+}
+
+:root {
+  --primary: #000000;          
+  --secondary: #0a0a0a;         
+  --tertiary: #151515;          
+
+  --text-primary: #ffffff;      
+  --text-secondary: #e6edf3;   
+  --text-tertiary: #8b949e;    
+
+  --accent: #7c3aed;           
+  --accent-hover: #8b5cf6;     
+  --accent-secondary: #2563eb;  
+
+  --input-bg: #000000;
+  --input-border: #21262d;
+  --input-text: #ffffff;
+  
+  --button-primary: #7c3aed;
+  --button-primary-hover: #8b5cf6;
+  --button-text: #ffffff;
+  
+  --button-secondary: #151515;
+  --button-secondary-hover: #21262d;
+  --button-secondary-text: #ffffff;
+
+ 
+  --border: #21262d;
+  --border-hover: #30363d;
+  --shadow: rgba(0, 0, 0, 0.8);
+  --gradient-primary: linear-gradient(135deg, #7c3aed, #2563eb);
+
+   transition: 
+    --primary 0.3s ease,
+    --secondary 0.3s ease,
+    --tertiary 0.3s ease,
+    --text-primary 0.3s ease,
+    --text-secondary 0.3s ease,
+    --text-tertiary 0.3s ease,
+    --accent 0.3s ease,
+    --accent-hover 0.3s ease,
+    --accent-secondary 0.3s ease,
+    --input-bg 0.3s ease,
+    --input-border 0.3s ease,
+    --input-text 0.3s ease,
+    --button-primary 0.3s ease,
+    --button-primary-hover 0.3s ease,
+    --button-text 0.3s ease,
+    --button-secondary 0.3s ease,
+    --button-secondary-hover 0.3s ease,
+    --button-secondary-text 0.3s ease,
+    --border 0.3s ease,
+    --border-hover 0.3s ease,
+    --shadow 0.3s ease;
+}
+
+* {
+  transition: 
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+html,body
+{ 
+  color: var(--text-primary);
+  background-color: var(--secondary);
+}
