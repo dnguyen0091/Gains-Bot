@@ -6,6 +6,10 @@
 #root
 {
   font-family: 'JetBrains Mono', monospace;
+  text-align: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
 :root {
@@ -75,4 +79,40 @@ html,body
 { 
   color: var(--text-primary);
   background-color: var(--secondary);
+}
+
+
+/* Custom scrollbar styles - Apple-style minimalist */
+.scrollbar-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-container::-webkit-scrollbar-thumb {
+  background-color: var(--text-tertiary);
+  border-radius: 10px;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.scrollbar-container::-webkit-scrollbar-thumb:hover {
+  opacity: 0.8;
+}
+
+.scrollbar-container::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Remove scrollbar arrows */
+.scrollbar-container::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* Firefox scrollbar styling */
+.scrollbar-container {
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-tertiary) transparent;
 }
