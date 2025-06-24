@@ -1,3 +1,5 @@
+
+
 // Header component
 export default function Header() {
   return (
@@ -5,4 +7,7 @@ export default function Header() {
       <img src="src/assets/Logo.png" alt="Logo" className="w-[8vh]"/>
     </div>
   );
+
+
+  
 }
