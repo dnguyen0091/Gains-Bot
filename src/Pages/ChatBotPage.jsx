@@ -1,11 +1,11 @@
 import ChatFeature from '../Components/ChatFeature';
-import Header from '../Components/Header';
+import SideBar from '../Components/SideBar';
 
 export default function ChatBotPage()
 {
     return(
         <div className="max-h-screen">
-            <Header />
+            <SideBar />
             <ChatFeature />
         </div>
     );
