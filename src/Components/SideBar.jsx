@@ -1,13 +1,20 @@
-
+import { useState } from 'react';
 
 // Header component
 export default function SideBar() {
+
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  let size = isCollapsed ? 'w-[4vw]' : 'w-[10vw]';
+  let toggleSideBarIcon = isCollapsed ? 'src/assets/Icons/sidebarExpand.svg' : 'src/assets/Icons/sidebarCollapse.svg';
+  const toggleSideBar = () => {
+    setIsCollapsed(!isCollapsed);
+  }
   return (
-    <div className="bg-[--primary] flex  flex-col justify-start items-start h-[100vh] w-[10vw] fixed top-0 left-0 right-0 px-4 py-2">
+    <div className={`bg-[--primary] flex flex-col justify-start items-start h-[100vh] ${size} fixed top-0 left-0 right-0 px-4 py-2`}>
       {/* Header of SideBar */}
-      <div className="flex flex-row">
+      <div className="flex flex-row gap-[2vw] items-center">
         <img src="src/assets/Logo.png" alt="Logo" className="w-[3vw]"/>
-        <img src="src/assets/Icons/sidebarCollapse.png" alt="sideBarCollapse" className="w-[3vw]"/>
+        <button onClick={toggleSideBar}><img src={toggleSideBarIcon} alt="sideBarCollapse" className="w-[3vw]"/></button>        
       </div>
 
       {/* Footer of SideBar */}
@@ -17,7 +24,4 @@ export default function SideBar() {
       </div>
     </div>
   );
-
-
-  
 }
