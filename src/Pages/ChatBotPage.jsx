@@ -1,5 +1,4 @@
 import ChatFeature from '../Components/ChatFeature';
-import Footer from '../Components/Footer';
 import Header from '../Components/Header';
 
 export default function ChatBotPage()
@@ -8,7 +7,6 @@ export default function ChatBotPage()
         <div className="max-h-screen">
             <Header />
             <ChatFeature />
-            <Footer />
         </div>
     );
 }
