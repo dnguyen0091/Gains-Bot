@@ -187,7 +187,7 @@ export default function ChatFeature() {
             onClick={handleSendClick} 
             disabled={loading}
           >
-            <img src="/src/assets/send.png" alt="send" className="w-6 h-6" />
+            <img src="/src/assets/Icons/send.png" alt="send" className="w-6 h-6" />
           </button>
         </div>
       </div>
