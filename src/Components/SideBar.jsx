@@ -14,7 +14,7 @@ export default function SideBar() {
       {/* Header */}
       <div className={`flex items-center ${isCollapsed ? 'justify-center' : 'justify-between'} transition-all duration-500`}>
         <div className={`flex items-center gap-3 transition-all duration-500 ${isCollapsed ? 'justify-center w-full' : ''}`}>
-          <img src="src/assets/Logo.png" alt="Logo" className="w-8 h-8" />
+          <img src="src/assets/Logo.png" alt="Logo" className="w-[2.5vw]" />
           <span className={`text-lg font-semibold text-[--text-primary] transition-opacity duration-300 ${isCollapsed ? 'opacity-0 w-0 overflow-hidden' : 'opacity-100 w-auto ml-2'}`}>GainsBot</span>
         </div>
         <button
@@ -24,7 +24,7 @@ export default function SideBar() {
           <img
             src={isCollapsed ? 'src/assets/Icons/sidebarExpand.svg' : 'src/assets/Icons/sidebarCollapse.svg'}
             alt={isCollapsed ? 'Expand Sidebar' : 'Collapse Sidebar'}
-            className={`w-5 h-5 transition-transform duration-300 ${isCollapsed ? 'rotate-180' : 'rotate-0'}`}
+            className={`w-[2vw] transition-transform duration-300 ${isCollapsed ? 'rotate-180' : 'rotate-0'}`}
           />
         </button>
       </div>
@@ -49,7 +49,7 @@ export default function SideBar() {
       {/* Footer */}
       <div className={`flex items-center gap-2 p-2 transition-all duration-500 ${isCollapsed ? 'justify-center' : ''}`}>
         <a href="https://github.com/dnguyen0091" target="_blank" rel="noopener noreferrer" className="transition-transform duration-200 hover:scale-110">
-          <img src="src/assets/github.png" alt="GitHub" className="w-6 h-6" />
+          <img src="src/assets/github.png" alt="GitHub" className="w-[2vw]" />
         </a>
         <a
           href="https://github.com/dnguyen0091"
