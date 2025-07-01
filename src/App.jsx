@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import './App.css';
+import { ThemeProvider } from './Components/Context/ThemeContext.jsx';
 import ChatBotPage from './Pages/ChatBotPage.jsx';
 
 function App() {
@@ -22,7 +23,11 @@ function App() {
   };
 
   return (
-      <ChatBotPage />
+    <ThemeProvider>
+      <div className="App">
+        <ChatBotPage />
+      </div>
+    </ThemeProvider>
   );
 }
 export default App;
