@@ -13,13 +13,35 @@ export const useTheme = () => {
 export const ThemeProvider = ({ children }) => {
     const [theme, setTheme] = useState(() => {
         return localStorage.getItem("theme") || "dark";
-});
+    });
 
     useEffect(() => {
         const root = document.documentElement;
-        root.classList.remove("light", "dark");
-        root.classList.add(theme);
+        const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+        
+        const applyTheme = (currentTheme) => {
+            if (currentTheme === 'System') {
+                if (mediaQuery.matches) {
+                    setTheme("dark");
+                } else {
+                    setTheme("light");
+                }
+            }
+        };
+
+        applyTheme(theme);
         localStorage.setItem("theme", theme);
+
+        const handleSystemThemeChange = (e) => {
+            if (theme === "System") {
+                applyTheme('System');
+            }
+        };
+
+        mediaQuery.addEventListener("change", handleSystemThemeChange);
+        return () => {
+            mediaQuery.removeEventListener("change", handleSystemThemeChange);
+        };
     }, [theme]);
 
     const toggleTheme = () => {
