@@ -1,8 +1,10 @@
 import { useRef, useState } from 'react';
+import { useTheme } from './Context/ThemeContext';
 
 export default function Settings({ onClose }) {
     const [confirming, setConfirming] = useState(false);
     const timerRef = useRef(null);
+    const {theme, setTheme} = useTheme();
 
     const handleClearClick = () => {
         if (!confirming) {
@@ -16,6 +18,10 @@ export default function Settings({ onClose }) {
         }
     };
 
+
+    const handleThemeChange = (event) => {
+        setTheme(event.target.value);
+    }
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
             {/* Grey overlay */}
@@ -32,7 +38,7 @@ export default function Settings({ onClose }) {
                 {/* Theme selection */}
                 <div className="flex flex-row items-center justify-between w-full mb-[1.5em] gap-[1em]">
                     <label htmlFor="themeDropdown" className="text-[--text-primary] font-medium text-[1em]">Theme</label>
-                    <select name="Select Theme" id="themeDropdown" className="p-[0.5em] rounded-lg border-[0.07em] border-[--border] bg-[--primary] text-[--text-primary] focus:outline-none focus:ring-2 focus:ring-[--accent] transition-all duration-200 text-[1em]">
+                    <select name="Select Theme" value={theme} id="themeDropdown" onChange={handleThemeChange} className="p-[0.5em] rounded-lg border-[0.07em] border-[--border] bg-[--primary] text-[--text-primary] focus:outline-none focus:ring-2 focus:ring-[--accent] transition-all duration-200 text-[1em]">
                         <option value="system">System</option>
                         <option value="Dark">Dark</option>
                         <option value="Light">Light</option>
