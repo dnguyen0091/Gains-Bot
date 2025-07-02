@@ -19,22 +19,31 @@ export const ThemeProvider = ({ children }) => {
         const root = document.documentElement;
         const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
         
-        const applyTheme = (currentTheme) => {
-            if (currentTheme === 'System') {
-                if (mediaQuery.matches) {
-                    setTheme("dark");
-                } else {
-                    setTheme("light");
-                }
+        const applyThemeToDOM = (themeToApply) => {
+            // Remove existing theme classes
+            root.classList.remove('light', 'dark');
+            
+            // Apply the new theme class (but not for dark since it's the default)
+            if (themeToApply === 'light') {
+                root.classList.add('light');
             }
         };
 
-        applyTheme(theme);
+        const determineTheme = (currentTheme) => {
+            if (currentTheme === 'system') {
+                return mediaQuery.matches ? 'dark' : 'light';
+            }
+            return currentTheme;
+        };
+
+        const effectiveTheme = determineTheme(theme);
+        applyThemeToDOM(effectiveTheme);
         localStorage.setItem("theme", theme);
 
         const handleSystemThemeChange = (e) => {
-            if (theme === "System") {
-                applyTheme('System');
+            if (theme === "system") {
+                const newEffectiveTheme = e.matches ? 'dark' : 'light';
+                applyThemeToDOM(newEffectiveTheme);
             }
         };
 

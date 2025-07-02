@@ -67,8 +67,41 @@
     --shadow 0.3s ease;
 }
 
+/* Dark theme (default) */
+:root,
+:root.dark {
+  --primary: #000000;          
+  --secondary: #0a0a0a;         
+  --tertiary: #151515;          
 
-.light{
+  --text-primary: #ffffff;      
+  --text-secondary: #e6edf3;   
+  --text-tertiary: #8b949e;    
+
+  --accent: #7c3aed;           
+  --accent-hover: #8b5cf6;     
+  --accent-secondary: #2563eb;  
+
+  --input-bg: #000000;
+  --input-border: #21262d;
+  --input-text: #ffffff;
+  
+  --button-primary: #7c3aed;
+  --button-primary-hover: #8b5cf6;
+  --button-text: #ffffff;
+  
+  --button-secondary: #151515;
+  --button-secondary-hover: #21262d;
+  --button-secondary-text: #ffffff;
+
+  --border: #21262d;
+  --border-hover: #30363d;
+  --shadow: rgba(0, 0, 0, 0.8);
+  --gradient-primary: linear-gradient(135deg, #7c3aed, #2563eb);
+}
+
+
+:root.light {
   --primary: #ffffff;          
   --secondary: #f0f0f0;         
   --tertiary: #e0e0e0;          

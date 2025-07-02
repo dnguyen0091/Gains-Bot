@@ -40,8 +40,8 @@ export default function Settings({ onClose }) {
                     <label htmlFor="themeDropdown" className="text-[--text-primary] font-medium text-[1em]">Theme</label>
                     <select name="Select Theme" value={theme} id="themeDropdown" onChange={handleThemeChange} className="p-[0.5em] rounded-lg border-[0.07em] border-[--border] bg-[--primary] text-[--text-primary] focus:outline-none focus:ring-2 focus:ring-[--accent] transition-all duration-200 text-[1em]">
                         <option value="system">System</option>
-                        <option value="Dark">Dark</option>
-                        <option value="Light">Light</option>
+                        <option value="dark">Dark</option>
+                        <option value="light">Light</option>
                     </select>
                 </div>
 
