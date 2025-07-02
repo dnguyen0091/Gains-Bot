@@ -42,29 +42,6 @@
   --border-hover: #30363d;
   --shadow: rgba(0, 0, 0, 0.8);
   --gradient-primary: linear-gradient(135deg, #7c3aed, #2563eb);
-
-   transition: 
-    --primary 0.3s ease,
-    --secondary 0.3s ease,
-    --tertiary 0.3s ease,
-    --text-primary 0.3s ease,
-    --text-secondary 0.3s ease,
-    --text-tertiary 0.3s ease,
-    --accent 0.3s ease,
-    --accent-hover 0.3s ease,
-    --accent-secondary 0.3s ease,
-    --input-bg 0.3s ease,
-    --input-border 0.3s ease,
-    --input-text 0.3s ease,
-    --button-primary 0.3s ease,
-    --button-primary-hover 0.3s ease,
-    --button-text 0.3s ease,
-    --button-secondary 0.3s ease,
-    --button-secondary-hover 0.3s ease,
-    --button-secondary-text 0.3s ease,
-    --border 0.3s ease,
-    --border-hover 0.3s ease,
-    --shadow 0.3s ease;
 }
 
 /* Dark theme (default) */
@@ -130,14 +107,6 @@
   --border-hover: #b3b3b3;
   --shadow: rgba(0, 0, 0, 0.1);
   --gradient-primary: linear-gradient(135deg, #7c3aed, #2563eb);
-}
-
-* {
-  transition: 
-    background-color 0.3s ease,
-    color 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease;
 }
 
 html,body

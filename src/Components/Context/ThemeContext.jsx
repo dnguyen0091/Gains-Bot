@@ -23,9 +23,11 @@ export const ThemeProvider = ({ children }) => {
             // Remove existing theme classes
             root.classList.remove('light', 'dark');
             
-            // Apply the new theme class (but not for dark since it's the default)
+            // Apply the new theme class
             if (themeToApply === 'light') {
                 root.classList.add('light');
+            } else {
+                root.classList.add('dark');
             }
         };
 
