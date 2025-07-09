@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ThemedIcon from './Context/ThemeIconContext.jsx';
 
 export default function SideBar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -34,11 +35,11 @@ export default function SideBar() {
         <div className={`flex flex-col items-center gap-2 transition-all duration-500 ${isCollapsed ? 'space-y-4' : 'items-stretch'}`}>
           {/* Example nav items */}
           <button className={`flex items-center ${isCollapsed ? 'justify-center' : 'gap-3'} p-2 rounded-lg hover:bg-[--tertiary] transition-all duration-200`}>
-            <img src="src/assets/Icons/newChat.svg" alt="New Chat" className="w-[2vw]" />
+            <ThemedIcon darkSrc="src/assets/Icons/newChat.svg" lightSrc="src/assets/Icons/newChatLightMode.svg" alt="New Chat" className="w-[2vw]" />
             <span className={`text-[--text-secondary] transition-opacity duration-300 ${isCollapsed ? 'opacity-0 w-0 overflow-hidden' : 'opacity-100 w-auto ml-2'}`}>New Chat</span>
           </button>
           <button className={`flex items-center ${isCollapsed ? 'justify-center' : 'gap-3'} p-2 rounded-lg hover:bg-[--tertiary] transition-all duration-200`}>
-            <img src="src/assets/Icons/history.svg" alt="History" className="w-[2vw]" />
+            <ThemedIcon darkSrc="src/assets/Icons/history.svg" lightSrc="src/assets/Icons/historyLightMode.svg" alt="History" className="w-[2vw]" />
             <span className={`text-[--text-secondary] transition-opacity duration-300 ${isCollapsed ? 'opacity-0 w-0 overflow-hidden' : 'opacity-100 w-auto ml-2'}`}>Chat History</span>
           </button>
         </div>
@@ -47,7 +48,7 @@ export default function SideBar() {
       {/* Footer */}
       <div className={`flex items-center gap-2 p-2 transition-all duration-500 ${isCollapsed ? 'justify-center' : ''}`}>
         <a href="https://github.com/dnguyen0091" target="_blank" rel="noopener noreferrer" className="transition-transform duration-200 hover:scale-110">
-          <img src="src/assets/github.png" alt="GitHub" className="w-[2vw]" />
+          <ThemedIcon darkSrc="src/assets/Icons/github.png" lightSrc="src/assets/Icons/githubLightMode.svg" alt="GitHub" className="w-[2vw]" />
         </a>
         <a
           href="https://github.com/dnguyen0091"

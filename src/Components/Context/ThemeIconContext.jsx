@@ -1,7 +1,7 @@
 // src/components/ThemedIcon.jsx
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme } from './ThemeContext';
 
-export const ThemedIcon = ({ darkSrc, lightSrc, alt, className, ...props }) => {
+const ThemedIcon = ({ darkSrc, lightSrc, alt, className, ...props }) => {
     const { theme } = useTheme();
     const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
     
@@ -14,6 +14,8 @@ export const ThemedIcon = ({ darkSrc, lightSrc, alt, className, ...props }) => {
         />
     );
 };
+
+export default ThemedIcon;
 
 // Usage:
 // <ThemedIcon 
