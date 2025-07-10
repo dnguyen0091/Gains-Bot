@@ -1,26 +1,19 @@
-// import { createContext, useContext, useEffect, useState } from "react";
 // import { apiLoginUser, apiRegisterUser } from "../api/auth";
 
 // export const AuthContext = createContext(undefined);
 
-// export function AuthProvider({ children }) {
-//   const [user, setUser] = useState(null);
-
-//   useEffect(() => {
-//     const storedUser = localStorage.getItem("user");
-//     if(storedUser && storedUser !== "undefined") {
-//       setUser(JSON.parse(storedUser));
-//     }
-//   }, [localStorage.getItem("user")]);
-
-
-//   const loginUser = async (email, password) => {
-//     const data = await apiLoginUser(email, password);
-//     localStorage.setItem("user", JSON.stringify(data.user));
-//     localStorage.setItem("token", data.token);
-//     setUser(data.user);
-//     console.log("User saved:", data.user);
-//   };
+export function AuthProvider({ children }) {
+  console.log("AuthProvider initialized");
+  
+  // Temporary simple implementation - just return children
+  return children;
+  // const loginUser = async (email, password) => {
+  //   const data = await apiLoginUser(email, password);
+  //   localStorage.setItem("user", JSON.stringify(data.user));
+  //   localStorage.setItem("token", data.token);
+  //   setUser(data.user);
+  //   console.log("User saved:", data.user);
+  // };
 
 //   const registerUser = async (firstName, lastName, email, password
 //   ) => {
@@ -50,4 +43,4 @@
 //     throw new Error('useAuth must be used within an AuthProvider');
 //   }
 //   return context;
-// }
+}
