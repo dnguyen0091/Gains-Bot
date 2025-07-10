@@ -1,10 +1,13 @@
-// src/components/ThemedIcon.jsx
 import { useTheme } from './ThemeContext';
 
+//Function to render an icon that changes based on the current theme
 const ThemedIcon = ({ darkSrc, lightSrc, alt, className, ...props }) => {
+
+    //check for the current theme and set the appropriate icon source
     const { theme } = useTheme();
     const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
     
+    // Return the appropriate icon based on the current theme
     return (
         <img 
         src={isDark ? darkSrc : lightSrc} 
