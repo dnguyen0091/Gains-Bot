@@ -23,8 +23,9 @@ export default function SideBar() {
               onClick={() => setIsCollapsed((prev) => !prev)}
               className={`p-2 rounded-md hover:bg-[--tertiary] transition-colors duration-200 ml-2 ${isCollapsed ? '' : ''}`}
             >
-              <img
-                src={isCollapsed ? 'src/assets/Icons/sidebarExpand.svg' : 'src/assets/Icons/sidebarCollapse.svg'}
+              <ThemedIcon
+                darkSrc={isCollapsed ? 'src/assets/Icons/sidebarExpand.svg' : 'src/assets/Icons/sidebarCollapse.svg'}
+                lightSrc={isCollapsed ? 'src/assets/Icons/sidebarExpandLightMode.svg' : 'src/assets/Icons/sidebarCollapseLightMode.svg'}
                 alt={isCollapsed ? 'Expand Sidebar' : 'Collapse Sidebar'}
                 className={`w-[2vw] transition-transform duration-300 ${isCollapsed ? 'rotate-180' : 'rotate-0'}`}
               />
