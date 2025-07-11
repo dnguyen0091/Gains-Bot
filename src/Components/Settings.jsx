@@ -14,10 +14,10 @@ export default function Settings({ onClose }) {
                 onClick={onClose}
             />
             {/* Popup content */}
-            <div className="relative bg-[--secondary] border-[0.07em] border-[--border] rounded-2xl shadow-2xl w-[50vw] max-w-[60em] min-h-[30em] flex flex-row overflow-hidden z-10 animate-fade-in">
+            <div className="relative bg-[--secondary] border-[0.07em] border-[--border] rounded-2xl shadow-2xl w-[30vw] max-w-[60em] min-h-[30em] flex flex-row overflow-hidden z-10 animate-fade-in">
 
                 {/* Tab Sidebar - 40% width */}
-                <div className="w-[40%] bg-[--primary] border-r border-[--border] flex flex-col">
+                <div className="w-[30%] bg-[--primary] border-r border-[--border] flex flex-col">
                     {/* Close button */}
                     <div className="flex justify-start p-4 border-b border-[--border]">
                         <button 
