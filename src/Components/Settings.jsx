@@ -19,19 +19,14 @@ export default function Settings({ onClose }) {
                 {/* Tab Sidebar - 40% width */}
                 <div className="w-[40%] bg-[--primary] border-r border-[--border] flex flex-col">
                     {/* Close button */}
-                    <div className="flex justify-end p-4 border-b border-[--border]">
+                    <div className="flex justify-start p-4 border-b border-[--border]">
                         <button 
                             onClick={onClose} 
                             aria-label="Close"
-                            className="text-[--text-tertiary] hover:text-[--accent] text-xl font-bold p-2 rounded-lg hover:bg-[--tertiary] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[--accent]"
+                            className="text-[--text-tertiary] hover:text-[--accent] text-xl font-bold p-2 rounded-lg hover:bg-[--tertiary] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[--accent] text-left"
                         >
                             ×
                         </button>
-                    </div>
-
-                    {/* Settings Title */}
-                    <div className="px-6 py-4 border-b border-[--border]">
-                        <h2 className="text-lg font-semibold text-[--text-primary]">Settings</h2>
                     </div>
 
                     {/* Tab Navigation */}
