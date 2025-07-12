@@ -39,7 +39,7 @@ export default function SideBar() {
       <div className='flex flex-col'>
           <div className={`flex items-center ${isCollapsed ? 'justify-center' : 'justify-between'} transition-all duration-500`}>
             <div className={`flex items-center gap-3 transition-all duration-500 ${isCollapsed ? 'justify-center w-full' : ''}`}>
-              <img src="src/assets/Logo.png" alt="Logo" className="w-[4vw]" onClick={() => handleRouteChange('home')}/>
+              <ThemedIcon darkSrc={'src/assets/Logo/Logo.png'} lightSrc={'src/assets/Logo/LogoLightMode.webp'} alt={'Logo'} className={'w-[4vw]'} />
               <span className={`text-lg font-semibold text-[--text-primary] transition-opacity duration-300 ${isCollapsed ? 'opacity-0 w-0 overflow-hidden' : 'opacity-100 w-auto ml-2'}`}>GainsBot</span>
             </div>
             <button
