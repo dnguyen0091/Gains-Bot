@@ -39,7 +39,7 @@ export default function SideBar() {
       <div className='flex flex-col'>
           <div className={`flex items-center mb-[3rem] ${isCollapsed ? 'justify-center' : 'justify-between'} transition-all duration-500`}>
             <div className={`flex items-center gap-3 transition-all duration-500 ${isCollapsed ? 'justify-center w-full' : ''}`}>
-              <ThemedIcon darkSrc={'src/assets/Logo/Logo.png'} lightSrc={'src/assets/Logo/LogoLightMode.webp'} alt={'Logo'} className={'w-[4vw]'} />
+              <ThemedIcon darkSrc={'src/assets/Logo/Logo.png'} lightSrc={'src/assets/Logo/LogoLightMode.webp'} alt={'Logo'} className={`${isCollapsed ? 'w-[2vw]' : 'w-[4vw]'}`} />
               <span className={`text-lg font-semibold text-[--text-primary] transition-opacity duration-300 ${isCollapsed ? 'opacity-0 w-0 overflow-hidden' : 'opacity-100 w-auto ml-2'}`}>GainsBot</span>
             </div>
             <button
@@ -50,7 +50,7 @@ export default function SideBar() {
                 darkSrc={isCollapsed ? 'src/assets/Icons/sidebarExpand.svg' : 'src/assets/Icons/sidebarCollapse.svg'}
                 lightSrc={isCollapsed ? 'src/assets/Icons/sidebarExpandLightMode.svg' : 'src/assets/Icons/sidebarCollapseLightMode.svg'}
                 alt={isCollapsed ? 'Expand Sidebar' : 'Collapse Sidebar'}
-                className={`w-[4vw] transition-transform duration-300 ${isCollapsed ? 'rotate-180' : 'rotate-0'}`}
+                className={`${isCollapsed ? 'w-[2vw]' : 'w-[3vw]'} transition-transform duration-300 ${isCollapsed ? 'rotate-180' : 'rotate-0'}`}
               />
             </button>
           </div>
