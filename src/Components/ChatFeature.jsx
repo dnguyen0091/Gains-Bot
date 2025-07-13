@@ -55,7 +55,6 @@ const TypingIndicator = () => {
             className="text-sm mr-2"
             style={{ color: 'var(--text-secondary)' }}
           >
-            AI is typing
           </div>
           <div className="flex space-x-1">
             <div 
