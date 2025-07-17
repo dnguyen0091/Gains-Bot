@@ -25,7 +25,7 @@ const HomePage = () => {
   };
 
   return (
-    <div className="h-[100vh] bg-gradient-to-br from-primary via-secondary to-tertiary relative overflow-hidden">
+    <div className="h-[90vh] bg-gradient-to-br from-primary via-secondary to-tertiary relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-20 left-20 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
@@ -64,7 +64,7 @@ const HomePage = () => {
             <h2 className="text-5xl md:text-7xl font-bold text-text-primary mb-6 leading-tight">
               Your AI-Powered
               <br />
-              <span className="bg-gradient-to-r from-accent to-accent-hover bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-accent to-accent-hover bg-clip-text">
                 Fitness Coach
               </span>
             </h2>
@@ -96,7 +96,7 @@ const HomePage = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animation-delay-600">
             <button
               onClick={handleGetStarted}
-              className="px-8 py-4 bg-gradient-to-r from-accent to-accent-hover text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-lg"
+              className="px-8 py-4 bg-[--accent] from-accent to-accent-hover text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-lg"
             >
               Get Started Free
             </button>
@@ -109,7 +109,7 @@ const HomePage = () => {
           </div>
 
           {/* Stats */}
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 animate-fade-in-up animation-delay-900">
+          <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-8 animate-fade-in-up animation-delay-900">
             <div className="text-center">
               <div className="text-3xl font-bold text-text-primary mb-1">AI-Powered</div>
               <div className="text-text-tertiary">Smart Recommendations</div>
