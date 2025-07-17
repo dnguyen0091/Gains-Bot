@@ -5,6 +5,7 @@ import { AuthProvider } from './Context/AuthContext.jsx';
 import ChatBotPage from './Pages/ChatBotPage.jsx';
 import ExistingChat from './Pages/ExistingChat.jsx';
 import HistoryPage from './Pages/HistoryPage.jsx';
+import HomePage from './Pages/HomePage.jsx';
 import NotFound from './Pages/NotFound.jsx';
 
 function App() {
@@ -31,8 +32,10 @@ function App() {
       <AuthProvider>
         <Router>
           <Routes>
-            {/* Direct routes without layout wrapper */}
-            <Route path="/" element={<ChatBotPage />} />
+            {/* Landing Page */}
+            <Route path="/" element={<HomePage />} />
+            
+            {/* App Routes */}
             <Route path="/chat" element={<ChatBotPage />} />
             <Route path="/chat/:chatId" element={<ExistingChat />} />
             <Route path="/history" element={<HistoryPage />} />
