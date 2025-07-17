@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../index.css';
 import Settings from './Settings.jsx';
-
 export default function ProfileButton() {
     const [profileActive, setProfileActive] = useState(false);
     const [settingsOpen, setSettingsOpen] = useState(false);
     const ref = useRef(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         function handleClickOutside(event) {
@@ -25,6 +26,12 @@ export default function ProfileButton() {
 
     const toggleProfile = () => setProfileActive((prev) => !prev);
 
+    const logout = () => {
+        // Add logout logic here
+        setProfileActive(false);
+
+        navigate('/'); // Redirect to home page after logout
+    };
     return (
         <>
             <div ref={ref} className="absolute top-0 right-0 p-[3rem] z-100 flex flex-col">
@@ -53,7 +60,7 @@ export default function ProfileButton() {
                         <li>
                             <button
                                 className="w-full text-left px-4 py-3 text-[--text-primary] hover:bg-red-500 hover:text-white transition-colors duration-200 focus:outline-none focus:bg-red-500 focus:text-white font-medium last:rounded-b-xl"
-                                onClick={() => { /* Add logout logic here */ setProfileActive(false); }}
+                                onClick={() => { logout(); }}
                                 aria-label="Logout"
                             >
                                 <div className="flex items-center gap-3">
