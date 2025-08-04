@@ -2,9 +2,9 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
 import { ThemeProvider } from './components/context/themeContext.jsx';
 import { AuthProvider } from './context/authContext.jsx';
-import ChatBotPage from './pages/ChatBotPage.jsx';
+import ChatBotPage from './pages/chatBotPage.jsx';
 import ExistingChat from './pages/existingChat.jsx';
-import HistoryPage from './pages/HistoryPage.jsx';
+import HistoryPage from './pages/historyPage.jsx';
 import HomePage from './pages/homePage.jsx';
 import NotFound from './pages/notFound.jsx';
 
