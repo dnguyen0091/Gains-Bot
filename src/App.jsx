@@ -1,32 +1,15 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
-import { ThemeProvider } from './Components/Context/ThemeContext.jsx';
-import { AuthProvider } from './Context/AuthContext.jsx';
-import ChatBotPage from './Pages/ChatBotPage.jsx';
-import ExistingChat from './Pages/ExistingChat.jsx';
-import HistoryPage from './Pages/HistoryPage.jsx';
-import HomePage from './Pages/HomePage.jsx';
-import NotFound from './Pages/NotFound.jsx';
+import { ThemeProvider } from './components/context/themeContext.jsx';
+import { AuthProvider } from './context/authContext.jsx';
+import ChatBotPage from './pages/chatBotPage.jsx';
+import ExistingChat from './pages/existingChat.jsx';
+import HistoryPage from './pages/historyPage.jsx';
+import HomePage from './pages/homePage.jsx';
+import NotFound from './pages/notFound.jsx';
 
 function App() {
-  // useEffect(() => {
-  //   const frontSvg = document.querySelector(".frontSvg");
-  //   const backSvg = document.querySelector(".backSvg");
-
-  //   frontSvg.addEventListener('load', () => {
-  //     checkMusclesUsed();
-  //   });
-
-  //   backSvg.addEventListener('load', () => {
-  //     checkMusclesUsed();
-  //   });
-  // }, []);
-
-  // const checkMusclesUsed = () => {
-  //   // Define the logic for checking muscles used
-  //   console.log('Checking muscles used...');
-  // };
-
+  
   return (
     <ThemeProvider>
       <AuthProvider>
