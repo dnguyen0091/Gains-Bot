@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import AccountSettings from './Settings Pages/AccountSettings.jsx';
-import GeneralSettings from './Settings Pages/GeneralSettings.jsx';
-import PrivacySettings from './Settings Pages/PrivacySettings.jsx';
+import AccountSettings from './settings-pages/accountSettings.jsx';
+import GeneralSettings from './settings-pages/generalSettings.jsx';
+import PrivacySettings from './settings-pages/privacySettings.jsx';
 export default function Settings({ onClose }) {
     const [activeTab, setActiveTab] = useState('general');
     
