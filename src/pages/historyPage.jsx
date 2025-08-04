@@ -1,4 +1,4 @@
-import SideBar from "../Components/SideBar";
+import SideBar from "../components/sideBar.jsx";
 
 export default function HistoryPage() {
     return (

@@ -1,6 +1,6 @@
-import ChatFeature from '../Components/ChatFeature';
-import ProfileButton from '../Components/ProfileButton';
-import SideBar from '../Components/SideBar';
+import ChatFeature from '../components/chatFeature.jsx';
+import ProfileButton from '../components/profileButton.jsx';
+import SideBar from '../components/sideBar.jsx';
 
 export default function ChatBotPage() {
     console.log('ChatBotPage is rendering'); // Debug log

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AuthModal from '../Components/AuthModal.jsx';
-import { useTheme } from '../Components/Context/ThemeContext.jsx';
-import ThemeToggle from '../Components/ThemeToggle.jsx';
+import AuthModal from '../components/authModal.jsx';
+import { useTheme } from '../components/context/themeContext.jsx';
+import ThemeToggle from '../components/themeToggle.jsx';
 
 const HomePage = () => {
   const [showAuthModal, setShowAuthModal] = useState(false);

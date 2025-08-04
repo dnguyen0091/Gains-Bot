@@ -1,6 +1,6 @@
-import ChatFeature from '../Components/ChatFeature.jsx';
-import ProfileButton from '../Components/ProfileButton.jsx';
-import SideBar from '../Components/SideBar.jsx';
+import ChatFeature from '../components/chatFeature.jsx';
+import ProfileButton from '../components/profileButton.jsx';
+import SideBar from '../components/sideBar.jsx';
 
 export default function existingChat() {
     return (
