@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import { API } from '../API/API.jsx';
 import '../App.css';
-import BackSvg from '../assets/muscleAssets/Back/fullBodyBack.svg?react';
-import FrontSvg from '../assets/muscleAssets/Front/fullBodyFront.svg?react';
+import BackSvg from '../assets/muscleAssets/back/fullBodyBack.svg?react';
+import FrontSvg from '../assets/muscleAssets/front/fullBodyFront.svg?react';
 
 const ChatMessage = ({ message }) => {
   const isUser = message.sender === "user";

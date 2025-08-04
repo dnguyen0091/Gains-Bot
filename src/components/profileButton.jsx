@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../index.css';
-import Settings from './Settings.jsx';
+import Settings from './settings.jsx';
+
 export default function ProfileButton() {
     const [profileActive, setProfileActive] = useState(false);
     const [settingsOpen, setSettingsOpen] = useState(false);

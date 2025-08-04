@@ -1,4 +1,4 @@
-import { useTheme } from './ThemeContext';
+import { useTheme } from './themeContext';
 
 //Function to render an icon that changes based on the current theme
 const ThemedIcon = ({ darkSrc, lightSrc, alt, className, ...props }) => {

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ThemedIcon from './Context/ThemeIconContext.jsx';
+import ThemedIcon from './context/themeIconContext.jsx';
 
 export default function SideBar() {
   const [isCollapsed, setIsCollapsed] = useState(false);

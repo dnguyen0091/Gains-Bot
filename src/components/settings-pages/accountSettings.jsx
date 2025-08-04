@@ -1,5 +1,3 @@
-
-
 export default function AccountSettings() {
     // Placeholder for account settings content
     return (
